@@ -114,7 +114,6 @@ const Home = () => {
             <span className="text-amber-600 font-bold"> JNV and Gyanodaya</span> entrance exams, bridging the gap between talent and opportunity.
           </p>
 
-          {/* Feature List for better readability */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             {[
               { label: "Nukkad Natak", color: "text-amber-600" },

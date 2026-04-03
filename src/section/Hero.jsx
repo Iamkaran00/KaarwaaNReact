@@ -12,7 +12,7 @@ import img6 from "../asset/img6.jpg";
 import img7 from "../asset/img7.jpg";
 import img8 from "../asset/img8.jpg";
 import img9 from "../asset/img9.jpg";
-
+import { Link } from "react-router-dom";
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
 export default function Hero() {
@@ -60,13 +60,11 @@ export default function Hero() {
           />
         </AnimatePresence>
 
-        {/* --- PREMIUM GRADIENT OVERLAY --- */}
-        {/* Top gradient for navbar visibility (if you have one) */}
+       
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent opacity-60" />
         {/* Bottom gradient for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
         
-        {/* Optional: Dot Pattern Overlay for texture */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
@@ -112,20 +110,23 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-5 mt-10 w-full sm:w-auto"
         >
           {/* Primary Button */}
-          <button className="group relative px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-3 overflow-hidden">
+       <Link to = '/donate'>   <button className="group relative px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-3 overflow-hidden">
             <span className="relative z-10">Join the Movement</span>
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
           </button>
+          </Link>
+          
 
+<Link to = '/donate'>
           {/* Secondary Button */}
           <button className="group px-8 py-4 bg-white/10 hover:bg-white text-white hover:text-black font-bold text-lg rounded-full backdrop-blur-sm border border-white/30 transition-all duration-300 flex items-center justify-center gap-3">
             <Heart className="w-5 h-5 text-red-500 fill-current group-hover:scale-110 transition-transform" />
             <span>Support Us</span>
           </button>
+          </Link>
         </motion.div>
       </motion.div>
 
-      {/* --- SCROLL INDICATOR --- */}
       <motion.div
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-white/50 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
