@@ -74,7 +74,7 @@ export default function DeveloperCredits() {
         
         <div className="mb-6">
           <img 
-            src="/img/sardar.jpg" 
+            src="/img/sardar.jpg.jpeg" 
             alt="Developer Profile" 
             className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded object-cover border-4 border-slate-800 shadow-lg bg-slate-800"
           />
