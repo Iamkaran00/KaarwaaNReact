@@ -22,7 +22,7 @@ import img3 from '../assets/examcenter.png';
 import img4 from '../assets/kanyashala1.png';
 import img5 from '../assets/teaching.png'
 import img6 from '../assets/bagdist.png'
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 const ChildEducation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 

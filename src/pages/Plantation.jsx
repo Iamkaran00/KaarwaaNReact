@@ -15,7 +15,7 @@ import gallery3 from '../asset/plantcover.jpeg';
 import gallery4 from '../asset/img10.jpg';
 import gallery5 from '../asset/plant1.jpg';
 import gallery6 from '../asset/plant3.jpg';
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 const TreePlantation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

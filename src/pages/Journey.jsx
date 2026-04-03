@@ -1,6 +1,6 @@
  import React from 'react';
 import { BookOpen, Heart, Sprout, Users, MapPin, Gift } from 'lucide-react';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import team from '../asset/team.jpg'
 const AboutKaarwaan = () => {
   return (
@@ -146,9 +146,11 @@ const AboutKaarwaan = () => {
           <p className="max-w-2xl mx-auto text-orange-500 mb-8">
             Changing the world starts with raising informed individuals. Join us in this journey of spreading smiles and creating futures.
           </p>
+          <Link to = '/donate' >
           <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors">
             Get Involved
           </button>
+          </Link>
         </div>
       </section>
       <Footer/>
