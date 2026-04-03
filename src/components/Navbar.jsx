@@ -101,10 +101,10 @@ const Navbar = () => {
   ];
  
   const domainItems = [
-    { label: "Child Education", path: "/childeducation", icon: <BookOpen size={18} />, desc: "Empowering young minds" },
-    { label: "Cloth Distribution", path: "/clothdonation", icon: <Shirt size={18} />, desc: "Providing warmth & dignity" },
-    { label: "Plantation", path: "/plantation", icon: <TreeDeciduous size={18} />, desc: "Greening our future" },
-    { label: "Orphanage Visits", path: "/orphanagevisit", icon: <Baby size={18} />, desc: "Sharing love and care" },
+    { label: "Child Education", path: "/child_education", icon: <BookOpen size={18} />, desc: "Empowering young minds" },
+    { label: "Cloth Distribution", path: "/cloth_distribution", icon: <Shirt size={18} />, desc: "Providing warmth & dignity" },
+    { label: "Plantation", path: "/plantation_drives", icon: <TreeDeciduous size={18} />, desc: "Greening our future" },
+    { label: "Orphanage Visits", path: "/orphanage_visit", icon: <Baby size={18} />, desc: "Sharing love and care" },
   ];
 
   return (

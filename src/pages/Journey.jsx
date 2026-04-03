@@ -2,6 +2,7 @@
 import { BookOpen, Heart, Sprout, Users, MapPin, Gift } from 'lucide-react';
 import Footer from '../components/Footer';
 import team from '../asset/team.jpg'
+import { Link } from 'react-router-dom';
 const AboutKaarwaan = () => {
   return (
     <div className="bg-slate-50 min-h-screen font-sans text-slate-800">
