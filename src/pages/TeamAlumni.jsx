@@ -43,7 +43,7 @@ const batches = [
       { name: "Mr. Aniket Kumar Gupta", role: "President", img: '/img/mbr2022_26/AniketKG.png' },
       { name: "Mr. Gajendra Singh", role: "Superintendent", img: '/img/mbr2022_26/GajendraT.jpg' },
       { name: "Ms. Savitri Patel", role: "Vice President", img: '/img/mbr2022_26/SavitriI.jpg' },
-      { name: "Mr. Dipansh Gupta", role: "Secretary", img: null },
+      { name: "Mr. Dipansh Gupta", role: "Secretary", img: '/img/mbr2022_26/DipanshG.png' },
       { name: "Ms. Aanchal Deode", role: "Secretary", img: '/img/mbr2022_26/AnchalD.jpg' },
       { name: "Ms. Shriyanshi Patel", role: "Secretary", img: null },
       { name: "Mr. Aryan Gaur", role: "Treasurer", img: '/img/mbr2022_26/AryanG.jpeg' },
