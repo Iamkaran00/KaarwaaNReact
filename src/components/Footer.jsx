@@ -4,12 +4,12 @@ import {
   Phone, 
   Mail, 
   Link as LinkIcon, 
-  HeartHandshake, 
-  Facebook, 
-  Instagram, 
-  Youtube 
+ 
+   
 } from 'lucide-react';
+import { HeartHandshake } from 'lucide-react';
 
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 const Footer = () => {
   return (
     <footer className="relative pt-10 overflow-hidden bg-gradient-to-b from-[#101828] to-[#05080f] text-slate-300 font-sans">
@@ -87,16 +87,16 @@ const Footer = () => {
               <div className="flex space-x-3">
                 <a href="https://www.instagram.com/kaarwaa.n?igsh=ZDF0c3Nham1rOWZk" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#d62976] hover:border-[#d62976] hover:-translate-y-1 shadow-lg">
-                  <Instagram className="w-5 h-5" />
+                  <FaInstagram className="w-5 h-5" />
                 </a>
                 {/* Facebook */}
                 <a href="https://www.facebook.com/kaarwaanjec?mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#1877F2] hover:border-[#1877F2] hover:-translate-y-1 shadow-lg">
-                  <Facebook className="w-5 h-5" />
+                  <FaFacebook className="w-5 h-5" />
                 </a>
                 <a href="http://www.youtube.com/@kaarwaanjec9417" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#FF0000] hover:border-[#FF0000] hover:-translate-y-1 shadow-lg">
-                  <Youtube className="w-5 h-5" />
+                  <FaYoutube className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -104,7 +104,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* THE BIG CENTER BRANDING TEXT */}
       <div className="w-[80vw] text-center mt-8 pb-4 select-none pointer-events-none relative z-0">
         <h1 
           className="font-black text-[12vw] uppercase leading-none tracking-widest opacity-100"

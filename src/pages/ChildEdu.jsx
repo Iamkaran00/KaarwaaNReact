@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 
 import { 
-  Quote, Heart, GraduationCap, ArrowRight, 
+    Heart, GraduationCap, ArrowRight, 
   Coffee, BookOpen, MapPin, Sparkles,
-  ChevronLeft, ChevronRight 
+   
 } from "lucide-react";
 import storyimg from '../asset/successstoryedu.jpg';
-// Assuming your assets are in the same place
+ 
 import ed1 from "../asset/edu1.jpg";
 import ed2 from "../asset/edu2.jpg";
 import ed6 from '../asset/ed4.jpeg';
@@ -26,7 +26,7 @@ import Footer from "../components/Footer";
 const ChildEducation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const carouselImages = [ed1, ed2,img2,ed4,ed5];
+  const carouselImages = [ed1, ed2,img2,ed4,ed5,img1];
 
  const cards = [
     {
