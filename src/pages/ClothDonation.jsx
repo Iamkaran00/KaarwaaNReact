@@ -1,252 +1,217 @@
 import React, { useState, useEffect } from 'react';
-import { Shirt, HeartHandshake, Snowflake, Sun, PackageOpen, ArrowRight } from 'lucide-react';
-
-// --- MOCK DATA FOR CAROUSEL ---
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Heart, MapPin, Map } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import img1 from '../asset/img2.jpg'
+import img2 from '../asset/img3.jpg'
+import img3 from '../asset/img5.jpg';
+import img4 from '../asset/img6.jpg';
+import img5 from '../assets/cloth1.jpg';
+import img6 from '../assets/cloth2.jpg';
+import img7 from '../assets/cloth3.jpg';
+import img8 from '../assets/cloth4.jpg';
+import img9 from '../assets/cloth5.jpg';
+import img10 from '../assets/cloth6.jpg';
+import img11 from '../assets/cloth7.jpg';
+import img12 from '../assets/cloth8.jpg';
+import img13 from '../assets/cloth9.jpg';
+import Footer from '../components/footer';
 const carouselImages = [
+  img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13
+];
+
+const distributionLocations = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    alt: "Volunteers sorting clothes",
-    headline: "Warmth for Everyone",
-    subhead: "Sharing comfort, one garment at a time."
+    title: "Gwarighat",
+    description: "Distributing warm blankets to those residing near the Narmada riverbanks.",
+    image: img9
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    alt: "Winter clothing distribution",
-    headline: "Defeating the Cold",
-    subhead: "Winter drives for the homeless."
+    title: "Railway Station",
+    description: "Reaching out to stranded travelers and the homeless seeking shelter.",
+    image: img5
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80",
-    alt: "Happy child receiving clothes",
-    headline: "More Than Fabric",
-    subhead: "Giving dignity and confidence."
+    title: "High Court Area",
+    description: "Providing essential clothing to daily wage workers in the vicinity.",
+    image: img8
+  },
+  {
+    id: 4,
+    title: "Local Shelters & Streets",
+    description: "Night drives across various under-resourced neighborhoods to provide warmth.",
+    image:  img12
   }
 ];
 
-// --- MOCK DATA FOR GALLERY CARDS ---
-const galleryItems = [
-  {
-    id: 1,
-    src: "https://images.unsplash.com/photo-1606907568273-547f10eb6136?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Slum Area Drive",
-    description: "Distributed over 500 kits of summer wear in dense urban settlements last month."
-  },
-  {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1578357078588-8442607e69cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Winter Blanket Mission",
-    description: "Providing heavy woolens and blankets to pavement dwellers during peak winter."
-  },
-  {
-    id: 3,
-    src: "https://images.unsplash.com/photo-1582213782179-e0d53f98f230?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Sorting Day at GEC",
-    description: "Volunteers categorizing donations by age and size to ensure dignified giving."
-  }
-];
-
-
-const ClothDonationSection = () => {
-  // Carousel State
+export default function ClothDistribution() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-play carousel effect
+  // Auto-advance carousel
   useEffect(() => {
-    const slideInterval = setInterval(() => {
+    const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
-    }, 5000); // Change slide every 5 seconds
-    return () => clearInterval(slideInterval);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide === carouselImages.length - 1 ? 0 : currentSlide + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide === 0 ? carouselImages.length - 1 : currentSlide - 1);
+  };
+
   return (
-    <div className="bg-slate-50 font-sans text-slate-800">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
+      
+      {/* --- HERO CAROUSEL SECTION --- */}
+      <section className="relative w-full h-[80vh] overflow-hidden bg-sky-100">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentSlide}
+            src={carouselImages[currentSlide]}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+            alt={`Cloth Distribution Slide ${currentSlide + 1}`}
+          />
+        </AnimatePresence>
 
-      {/* ================= SECTION 1: HERO CAROUSEL ================= */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden bg-slate-900">
-        {carouselImages.map((slide, index) => (
-          <div 
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+        <div className="absolute inset-0 bg-gradient-to-t from-sky-900/60 via-sky-800/30 to-transparent" />
+
+        
+
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full text-white transition-all">
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/30 hover:bg-white/50 backdrop-blur-md rounded-full text-white transition-all">
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </section>
+
+      {/* --- INSPIRATIONAL MESSAGE SECTION --- */}
+      <section className="max-w-4xl mx-auto px-6 py-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold text-sky-800 mb-6">The Power of a Simple Thread</h2>
+          <div className="w-24 h-1 bg-teal-300 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Clothing is more than just fabric; it's dignity, protection, and comfort. 
+            Through our distribution drives across the city, we aim to ensure that no one has to brave the harsh 
+            winters or blazing summers without proper attire. By passing on clothes you no longer wear, 
+            you are wrapping someone else in kindness and hope.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* --- LOCATION-BASED IMAGE GALLERY SECTION --- */}
+      <section className="bg-teal-50 py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            {/* Image with dark overlay */}
-            <img src={slide.src} alt={slide.alt} className="w-full h-full object-cover opacity-60" />
-            
-            {/* Content Overlay */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-lg">
-                {slide.headline}
-              </h2>
-              <p className="text-xl md:text-2xl font-light mb-8 drop-shadow-md max-w-2xl">
-                {slide.subhead}
-              </p>
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all flex items-center gap-2">
-                Donate Clothes Now <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        ))}
-        
-        {/* Carousel Indicators/Dots */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-20">
-          {carouselImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-orange-500 w-8' : 'bg-white/50 hover:bg-white'}`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </section>
+            <h2 className="text-3xl font-bold text-teal-800 mb-4">Our Drive Locations</h2>
+            <p className="text-teal-600">Reaching out to those who need it most, across the city.</p>
+          </motion.div>
 
-
-      {/* ================= SECTION 2: INFO WITH "STICKER" BACKGROUND ================= */}
-      {/* Creative interpretation: Using a subtle patterned background with low-opacity icons scattered */}
-      <section className="relative py-24 overflow-hidden bg-amber-50">
-        
-        {/* --- Decorative Background Elements (The "Stickers") --- */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
-            {/* Simple repeating pattern effect using CSS radial gradient */}
-           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(249, 115, 22, 0.3) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-           
-           {/* Floating large icons */}
-           <Shirt className="absolute top-10 left-[10%] w-32 h-32 text-orange-300 rotate-[-15deg]" />
-           <PackageOpen className="absolute bottom-10 right-[15%] w-40 h-40 text-orange-300 rotate-[10deg]" />
-           <HeartHandshake className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 text-orange-200 opacity-30" />
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <span className="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-6 tracking-wider uppercase">
-            Clothing Initiative
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">
-            Restoring Dignity, One Layer at a Time
-          </h2>
-          <div className="max-w-3xl mx-auto text-lg text-slate-700 leading-relaxed space-y-6 font-medium">
-            <p>
-              Clothing is more than just fabric stitched together; it is a basic human need that offers dignity, protection, and confidence. 
-            </p>
-            <p>
-              At Kaarwaa.N, we believe that forgotten clothes in your wardrobe can become a prized possession for someone else. Our drive focuses on collecting usable garments and ensuring they reach the hands of those who need them most, bridging the gap between excess and scarcity.
-            </p>
-          </div>
-        </div>
-        {/* Creative bottom wave separator */}
-        <div className="absolute bottom-0 left-0 right-0 leading-none translate-y-1">
-           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="fill-white h-24 md:h-32 w-full">
-             <path fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-           </svg>
-        </div>
-      </section>
-
-
-      {/* ================= SECTION 3: THE NEED & CURRENT SITUATION ================= */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-12">
-            
-            {/* Left: The Harsh Reality */}
-            <div className="flex-1 bg-red-50 p-8 rounded-3xl border-l-4 border-red-400">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-red-100 rounded-full">
-                   <Snowflake className="w-8 h-8 text-red-500" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {distributionLocations.map((location, index) => (
+              <motion.div
+                key={location.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="group flex flex-col bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img src={location.image} alt={location.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-sm text-teal-800 font-semibold text-sm">
+                    <MapPin className="w-4 h-4 text-teal-500" />
+                    {location.title}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">The Harsh Reality</h3>
-              </div>
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                Millions in India face the elements without adequate protection. The "current situation" is dire:
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2.5"></span>
-                  <p className="text-slate-700">Winters are fatal for pavement dwellers due to lack of warm clothing.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2.5"></span>
-                  <p className="text-slate-700">Children in slums often suffer from skin infections due to wearing unhygienic, tattered clothes.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2.5"></span>
-                  <p className="text-slate-700">The economic divide means buying new clothes is a luxury many cannot afford.</p>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right: Kaarwaan's Intervention */}
-            <div className="flex-1 bg-emerald-50 p-8 rounded-3xl border-l-4 border-emerald-400">
-               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-emerald-100 rounded-full">
-                   <Sun className="w-8 h-8 text-emerald-500" />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">{location.title}</h3>
+                  <p className="text-slate-600">{location.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800">Kaarwaa.N's Response</h3>
-              </div>
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                We refuse to let this be the norm. Our intervention focuses on organized, dignified distribution:
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <HeartHandshake className="w-5 h-5 text-emerald-500 mt-1 shrink-0" />
-                  <p className="text-slate-700">We don't just "dump" clothes. We sort them by size and gender to ensure useful donation.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <HeartHandshake className="w-5 h-5 text-emerald-500 mt-1 shrink-0" />
-                  <p className="text-slate-700">We execute targeted winter drives focused on blankets and woolens.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <HeartHandshake className="w-5 h-5 text-emerald-500 mt-1 shrink-0" />
-                  <p className="text-slate-700">We ensure clothes are clean and wearable before they reach the beneficiaries.</p>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ================= SECTION 4: IMAGE CARDS (IMPACT GALLERY) ================= */}
-      <section className="py-20 bg-slate-100">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-             <h2 className="text-3xl font-bold text-slate-900">Moments of Warmth</h2>
-             <p className="text-slate-600 mt-2 max-w-2xl mx-auto">Glimpses from our recent distribution drives, bringing smiles through generosity.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryItems.map((item) => (
-              <div key={item.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
-                {/* Card Image container with overflow hidden for zoom effect */}
-                <div className="h-64 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all z-10"></div>
-                  <img 
-                    src={item.src} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                   {/* Decorative icon on image */}
-                   <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-full z-20 text-orange-500">
-                     <Shirt size={20} />
-                   </div>
-                </div>
-                
-                {/* Card Content */}
-                <div className="p-8 relative">
-                   {/* Creative orange accent line */}
-                   <div className="absolute top-0 left-8 right-8 h-1 bg-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-orange-600 transition-colors">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">{item.description}</p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-
         </div>
       </section>
+
+      {/* --- JEC COLLEGE MAP SECTION --- */}
+      <section className="bg-white py-20 border-t border-slate-100">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="flex justify-center items-center gap-3 mb-4">
+              <Map className="w-8 h-8 text-sky-600" />
+              <h2 className="text-3xl font-bold text-sky-800">Our Current Base</h2>
+            </div>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              We are currently organizing our collection and distribution efforts from Jabalpur Engineering College (JEC). Drop by to donate or volunteer!
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-slate-200"
+          >
+            <iframe
+              title="JEC College Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.6836750796347!2d79.98447107590895!3d23.181734979062365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981a8daaaaaaaab%3A0x7d0ff70fceb7d30!2sJabalpur%20Engineering%20College!5e0!3m2!1sen!2sin!4v1714000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- SOOTHING FOOTER/CTA --- */}
+      <section className="bg-slate-50 py-16 text-center border-t border-slate-200">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto px-6"
+        >
+          <h3 className="text-2xl font-semibold text-slate-800 mb-4">Have clothes to spare?</h3>
+          <p className="text-slate-500 mb-8">Drop them off at JEC or schedule a pickup.</p>
+          <Link to = '/donate' >
+        <button className="bg-teal-500 hover:bg-teal-400 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md">
+            Join the Next Drive
+          </button>
+          </Link>
+        </motion.div>
+      </section>
+<Footer/>
     </div>
   );
-};
-
-export default ClothDonationSection;
+}

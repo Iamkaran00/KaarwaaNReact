@@ -1,215 +1,279 @@
 import { useState, useRef } from "react";
-
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 const batches = [
   {
-    year: "2021–25",
+    year: "2023–27",
     label: "Current Batch",
     members: [
-      { name: "Mr. Arpit Yadav", role: "President" },
-      { name: "Mr. Meghraj Jain", role: "Superintendent" },
-      { name: "Ms. Kishita Patel", role: "Vice President" },
-      { name: "Mr. Atharv Vibhute", role: "Secretary" },
-      { name: "Ms. Piyali Saha", role: "Secretary" },
-      { name: "Mr. Nikhil Tiwari", role: "Secretary" },
-      { name: "Mr. Gaurav Soni", role: "Treasurer" },
-      { name: "Ms. Divita Saikia", role: "Media Head" },
-      { name: "Mr. Ankit Sadiwal", role: "Media Head" },
-      { name: "Mr. Jai Nirkhe", role: "Teaching Head" },
-      { name: "Mr. Prince Sahu", role: "Teaching Head" },
-      { name: "Mr. Mrigank Raj Dubey", role: "Technical Head" },
-      { name: "Mr. Anirudh Jain", role: "Orphanage Head" },
-      { name: "Ms. Kashish Meghani", role: "Orphanage Head" },
-      { name: "Mr. Prajwal Nikhade", role: "Event Manager" },
-      { name: "Mr. Deepak Prajapati", role: "Exam Co-ordinator" },
+      { name: "Mr. Saurabh Patel", role: "President", img: "/img/mbr2023_27/SaurabhP.jpeg" },
+      { name: "Mr. Ankit Raj Singh", role: "Superintendent", img: "/img/mbr2023_27/AniketR.jpeg" },
+      { name: "Ms. Payal Sisodiya", role: "Vice President", img: "/img/mbr2023_27/PayalS.jpeg" },
+      { name: "Mr. Deependra Mahobiya", role: "Secretary", img: "/img/mbr2023_27/DeependraM.jpeg" },
+      { name: "Ms. Naina Bharti", role: "Secretary", img: null },
+      { name: "Mr. Devesh Pandey", role: "Secretary", img: "/img/mbr2023_27/DeveshP.jpeg" },
+      { name: "Mr. Nihal Jain", role: "Treasurer", img: "/img/mbr2023_27/NihalJ.jpeg" },
+      { name: "Ms. Mahima Parte", role: "Media Head", img: null },
+      { name: "Mr. Harshit Soni", role: "Media Head", img: "/img/mbr2023_27/HarshitS.jpeg" },
+      { name: "Ms. Jaishree Shukla", role: "Teaching Head", img: null },
+      { name: "Ms. Pranjal Singh", role: "Teaching Head", img: null },
+      { name: "Mr. Piyush Dwivedi", role: "Teaching Head", img: "/img/mbr2023_27/PiyushD.webp" },
+      { name: "Mr. Asad Qureshi", role: "Technical Head", img: null },
+      { name: "Mr. Karan Sahu", role: "Technical Head", img: "/img/mbr2023_27/KaranSahu.jpg" },
+      { name: "Mr. Arpit Selotkar", role: "Orphanage Head", img: "/img/mbr2023_27/ArpitS.jpeg" },
+      { name: "Ms. Khushbhu Patel", role: "Orphanage Head", img: "/img/mbr2023_27/KhusbooP.jpeg" },
+      { name: "Ms. Kapil Patidar", role: "Orphanage Head", img: null },
+      { name: "Mr. Arjun Kurmi", role: "Event Manager", img: null },
+      { name: "Mr. Yash Bhadoriya", role: "Event Manager", img: null },
+      { name: "Mr. Kohima Dharne", role: "Event Manager", img: null },
+      { name: "Mr. Ganesh Dhakad", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Raja Shaw", role: "Exam Co-ordinator", img: "/img/mbr2023_27/RajaS.jpeg" },
+      { name: "Mr. Kashish Sonker", role: "Exam Co-ordinator", img: "/img/mbr2023_27/KashishS.jpeg" },
+      { name: "Mr. Priyesh Rajak", role: "Core-Team Member", img: null },
+      { name: "Mr. Pushpendra Tomar", role: "Core-Team Member", img: null },
+      { name: "Mr. Uday Jain", role: "Core-Team Member", img: null },
+      { name: "Mr. Chetan Amne", role: "Core-Team Member", img: "/img/mbr2023_27/ChetanA.jpeg" },
+    ],
+  },
+  {
+    year: "2022–26",
+    label: "Current Batch",
+    members: [
+      { name: "Mr. Aniket Kumar Gupta", role: "President", img: '/img/mbr2022_26/AniketK.jpeg' },
+      { name: "Mr. Gajendra Singh", role: "Superintendent", img: '/img/mbr2022_26/GajendraT.jpg' },
+      { name: "Ms. Savitri Patel", role: "Vice President", img: '/img/mbr2022_26/SavitriI.jpg' },
+      { name: "Mr. Dipansh Gupta", role: "Secretary", img: null },
+      { name: "Ms. Aanchal Deode", role: "Secretary", img: '/img/mbr2022_26/AnchalD.jpg' },
+      { name: "Ms. Shriyanshi Patel", role: "Secretary", img: null },
+      { name: "Mr. Aryan Gaur", role: "Treasurer", img: '/img/mbr2022_26/AryanG.jpeg' },
+      { name: "Ms. Prachi Pandey", role: "Media Head", img: null },
+      { name: "Mr. Yatendra Pachori", role: "Media Head", img: null },
+      { name: "Mr. Anshul Payasi", role: "Media Head", img: null },
+      { name: "Ms. Shratika Agarwal", role: "Teaching Head", img: null },
+      { name: "Ms. Somya Raghuwanshi", role: "Teaching Head", img: null },
+      { name: "Mr. Chinmay Prakash Jha", role: "Teaching Head", img: null },
+      { name: "Ms. Devanshi Jain", role: "Technical Head", img: null },
+      { name: "Mr. Yashashvi Sharma", role: "Technical Head", img: null },
+      { name: "Mr. Atharv Tiwari", role: "Orphanage Head", img: '/img/mbr2022_26/AtharvT.jpg' },
+      { name: "Ms. Aayushi Patidar", role: "Orphanage Head", img: null },
+      { name: "Ms. Aman Sahu", role: "Orphanage Head", img: null },
+      { name: "Mr. Anurag Soni", role: "Event Manager", img: null },
+      { name: "Mr. Ranvijay Kumar Upadhyay", role: "Event Manager", img: '/img/mbr2022_26/RanvijayU.png' },
+      { name: "Mr. Pranav Kumar Gupta", role: "Event Manager", img: null },
+      { name: "Mr. Sameer Mahobiya", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Atharv Pant", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Darshan Verma", role: "Exam Co-ordinator", img: null },
+    ],
+  },
+  {
+    year: "2021–25",
+    label: "Alumni",
+    members: [
+      { name: "Mr. Arpit Yadav", role: "President", img: "/img/mbr2025/img 23.png - Arpit Yadav.jpg" },
+      { name: "Mr. Meghraj Jain", role: "Superintendent", img: "/img/mbr2025/IMG-20240701-WA0026 - Meghraj jain.jpg" },
+      { name: "Ms. Kishita Patel", role: "Vice President", img: "/img/mbr2025/IMG_1760 - 43_kishitapatel Patel.jpeg" },
+      { name: "Mr. Atharv Vibhute", role: "Secretary", img: "/img/mbr2025/t1 - Atharv Vibhute.jpg" },
+      { name: "Ms. Piyali Saha", role: "Secretary", img: "/img/mbr2025/20250311140833550 - Piyali Saha.jpeg" },
+      { name: "Mr. Nikhil Tiwari", role: "Secretary", img: "/img/mbr2025/IMG_20250311_162424 - Nikhil Tiwari.jpg" },
+      { name: "Mr. Gaurav Soni", role: "Treasurer", img: "/img/mbr2025/IMG_20250311_164645 - gaurav kumar.jpg" },
+      { name: "Ms. Divita Saikia", role: "Media Head", img: "/img/mbr2025/IMG_20250316_123216 - Divita Saikia.jpg" },
+      { name: "Mr. Ankit Sadiwal", role: "Media Head", img: "/img/mbr2025/PXL_20240416_022959757 - 21_EC_Ankit Sadiwal.jpg" },
+      { name: "Mr. Jai Nirkhe", role: "Teaching Head", img: "/img/mbr2025/WhatsApp Image 2025-02-20 at 12.30.29_5fdb9da1 - Jai Nirkhe.jpg" },
+      { name: "Mr. Prince Sahu", role: "Teaching Head", img: "/img/mbr2025/Screenshot_2024-10-24-21-16-29-83_99c04817c0de5652397fc8b56c3b3817 - PRINCE.jpg" },
+      { name: "Mr. Mrigank Raj Dubey", role: "Technical Head", img: "/img/mbr2025/IMG_20250223_010750_734 - Mrigank Raj Dubey.webp" },
+      { name: "Mr. Anirudh Jain", role: "Orphanage Head", img: "/img/mbr2025/IMG_20240322_190029_368 - Anirudh Jain.jpg" },
+      { name: "Ms. Kashish Meghani", role: "Orphanage Head", img: "/img/mbr2025/1741691989959 - Kashish Meghani_.jpg" },
+      { name: "Mr. Prajwal Nikhade", role: "Event Manager", img: "/img/mbr2025/IMG_20250311_190804 - Prajwal Nikhade.jpg" },
+      { name: "Mr. Deepak Prajapati", role: "Exam Co-ordinator", img: "/img/mbr2025/imresizer-1740071311271 - Deepak Prajapati.jpg" },
     ],
   },
   {
     year: "2020–24",
     label: "Alumni",
     members: [
-      { name: "Mr. Amar Singh Garg", role: "President" },
-      { name: "Mr. Akshat Rahangdale", role: "Superintendent" },
-      { name: "Ms. Richa Gupta", role: "Vice President" },
-      { name: "Mr. Harshwardhan Thakur", role: "Secretary" },
-      { name: "Mr. Aditya Tripathi", role: "Treasurer" },
-      { name: "Ms. Shishti Chaubey", role: "Media Head" },
-      { name: "Ms. Shreya Gupta", role: "Media Head" },
-      { name: "Mr. Rishabh Porwal", role: "Media Head" },
-      { name: "Mr. Aman Kumar", role: "Technical Head" },
-      { name: "Mr. Kumar Vaibhav", role: "Technical Head" },
-      { name: "Mr. Aman Devaliya", role: "Technical Head" },
-      { name: "Mr. Anubhav Verma", role: "Teaching Head" },
-      { name: "Ms. Poornima Bhumarkar", role: "Teaching Head" },
-      { name: "Mr. Naveen Prajapati", role: "Teaching Head" },
-      { name: "Ms. Angel Tirkey", role: "Orphanage Head" },
-      { name: "Ms. Astha", role: "Orphanage Head" },
-      { name: "Mr. Gaurav Kumar", role: "Orphanage Head" },
-      { name: "Mr. Sandeep Sharma", role: "Orphanage Head" },
-      { name: "Mr. Abhishek Shukla", role: "Exam Co-ordinator" },
-      { name: "Mr. Ankit Pandey", role: "Exam Co-ordinator" },
-      { name: "Mr. Dipanshu Mishra", role: "Exam Co-ordinator" },
-      { name: "Mr. Abhishek Shukla", role: "Event Manager" },
-      { name: "Ms. Urvija Jha", role: "Event Manager" },
-      { name: "Ms. Ayushi Sonwane", role: "Event Manager" },
-      { name: "Mr. Prashant Pandey", role: "Event Manager" },
-      { name: "Mr. Vishnu Mishra", role: "Core Member" },
-      { name: "Mr. Vaibhav Rajawat", role: "Core Member" },
-      { name: "Ms. Muskan Yadav", role: "Core Member" },
+      { name: "Mr. Amar Singh Garg", role: "President", img: "/img/mbr2024/IMG-20250217-WA0041 - Aniket Kumar Gupta.jpg" },
+      { name: "Mr. Akshat Rahangdale", role: "Superintendent", img: "/img/mbr2024/Screenshot 2025-07-26 114924.png" },
+      { name: "Ms. Richa Gupta", role: "Vice President", img: null },
+      { name: "Mr. Harshwardhan Thakur", role: "Secretary", img: "/img/mbr2024/DSC04264 - Harshwardhan Thakur.JPG" },
+      { name: "Mr. Aditya Tripathi", role: "Treasurer", img: null },
+      { name: "Ms. Shishti Chaubey", role: "Media Head", img: null },
+      { name: "Ms. Shreya Gupta", role: "Media Head", img: null },
+      { name: "Mr. Rishabh Porwal", role: "Media Head", img: null },
+      { name: "Mr. Aman Kumar", role: "Technical Head", img: "/img/mbr2024/IMG_20250217_084346 - Aman KUMAR.jpg" },
+      { name: "Mr. Kumar Vaibhav", role: "Technical Head", img: null },
+      { name: "Mr. Aman Devaliya", role: "Technical Head", img: "/img/mbr2024/IMG-20250112-WA0003 - Aman Devaliya.jpg" },
+      { name: "Mr. Anubhav Verma", role: "Teaching Head", img: null },
+      { name: "Ms. Poornima Bhumarkar", role: "Teaching Head", img: "/img/mbr2024/IMG_20250311_215352 - Poornima Bhumarkar.jpg" },
+      { name: "Mr. Naveen Prajapati", role: "Teaching Head", img: null },
+      { name: "Ms. Angel Tirkey", role: "Orphanage Head", img: null },
+      { name: "Ms. Astha", role: "Orphanage Head", img: null },
+      { name: "Mr. Gaurav Kumar", role: "Orphanage Head", img: "/img/mbr2024/IMG-20240101-WA0048 - Gaurav Kumar.jpg" },
+      { name: "Mr. Sandeep Sharma", role: "Orphanage Head", img: null },
+      { name: "Mr. Abhishek Shukla", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Ankit Pandey", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Dipanshu Mishra", role: "Exam Co-ordinator", img: null },
+      { name: "Mr. Abhishek Shukla", role: "Event Manager", img: null },
+      { name: "Ms. Urvija Jha", role: "Event Manager", img: null },
+      { name: "Ms. Ayushi Sonwane", role: "Event Manager", img: null },
+      { name: "Mr. Prashant Pandey", role: "Event Manager", img: null },
+      { name: "Mr. Vishnu Mishra", role: "Core Member", img: "/img/mbr2024/SAVE_20250312_085558 - VISHNU MISHRA.jpg" },
+      { name: "Mr. Vaibhav Rajawat", role: "Core Member", img: null },
+      { name: "Ms. Muskan Yadav", role: "Core Member", img: "/img/mbr2024/IMG_20250314_153318 - Muskan Yadav.jpg" },
     ],
   },
   {
     year: "2019–23",
     label: "Alumni",
     members: [
-      { name: "Mr. Shivam Birla", role: "President" },
-      { name: "Mr. Tanmay Chourey", role: "Superintendent" },
-      { name: "Ms. Palak Mishra", role: "Vice President" },
-      { name: "Ms. Tejanshi Daushlya", role: "Secretary" },
-      { name: "Mr. Adarsh Dwivedi", role: "Treasurer" },
+      { name: "Mr. Shivam Birla", role: "President", img: "/img/mbr2023/sbsir.jpg" },
+      { name: "Mr. Tanmay Chourey", role: "Superintendent", img: "/img/mbr2023/tncsir.jpg" },
+      { name: "Ms. Palak Mishra", role: "Vice President", img: "/img/mbr2023/plkmam.jpg" },
+      { name: "Ms. Tejanshi Daushlya", role: "Secretary", img: "/img/mbr2023/tjdmam.jpeg" },
+      { name: "Mr. Adarsh Dwivedi", role: "Treasurer", img: "/img/mbr2023/adwsir.jpg" },
     ],
   },
   {
     year: "2018–22",
     label: "Alumni",
     members: [
-      { name: "Mr. Sanjeev Kumar", role: "President" },
-      { name: "Ms. Shivani Karyam", role: "Vice President" },
-      { name: "Mr. Bhoopendra Singh", role: "Secretary" },
-      { name: "Ms. Divyanshi Jain", role: "Secretary" },
-      { name: "Mr. Shubham Rimjha", role: "Media Head" },
-      { name: "Mr. Ankit Yadav", role: "Treasurer" },
+      { name: "Mr. Sanjeev Kumar", role: "President", img: "/img/mbr2022/sanjeevimg.jpg" },
+      { name: "Ms. Shivani Karyam", role: "Vice President", img: "/img/mbr2022/shivi.png" },
+      { name: "Mr. Bhoopendra Singh", role: "Secretary", img: "/img/mbr2022/bhoop.png" },
+      { name: "Ms. Divyanshi Jain", role: "Secretary", img: "/img/mbr2022/divyu.png" },
+      { name: "Mr. Shubham Rimjha", role: "Media Head", img: "/img/mbr2022/rimjh.jpg" },
+      { name: "Mr. Ankit Yadav", role: "Treasurer", img: "/img/mbr2022/ankit.jpg" },
     ],
   },
   {
     year: "2017–21",
     label: "Alumni",
     members: [
-      { name: "Mr. Yogendra Singh Rathor", role: "President" },
-      { name: "Mr. Keshav Parihar", role: "Treasurer" },
+      { name: "Mr. Yogendra Singh Rathor", role: "President", img: "/img/mbr2021/ysrsir.jpg" },
+      { name: "Mr. Keshav Parihar", role: "Treasurer", img: "/img/mbr2021/ksvsir.jpg" },
     ],
   },
   {
     year: "2016–20",
     label: "Alumni",
     members: [
-      { name: "Mr. Rahul Patidar", role: "President" },
-      { name: "Ms. Ekta Barpete", role: "Vice President" },
-      { name: "Mr. Himanshu Shankhla", role: "Member" },
-      { name: "Mr. Nishant Nagwanshi", role: "Member" },
-      { name: "Mr. Chanchal Singh Thakur", role: "Member" },
-      { name: "Mr. Rishi Mishra", role: "Member" },
-      { name: "Mr. Shubham Mishra", role: "Member" },
-      { name: "Mr. Navneet", role: "Member" },
-      { name: "Mr. Neetiraj Malviya", role: "Member" },
-      { name: "Ms. Pooja Soni", role: "Member" },
-      { name: "Ms. Sangeeta Paraste", role: "Member" },
-      { name: "Ms. Aarti Dhurve", role: "Member" },
-      { name: "Ms. Usha Suryawanshi", role: "Member" },
-      { name: "Ms. Swati Soni", role: "Member" },
-      { name: "Ms. Anshul Tripathi", role: "Member" },
-      { name: "Ms. Shruti Singour", role: "Member" },
-      { name: "Mr. Ankit Athnere", role: "Member" },
-      { name: "Ms. Sonam", role: "Member" },
-      { name: "Ms. Aradhna Mishra", role: "Member" },
-      { name: "Mr. Shailendra Namdev", role: "Member" },
-      { name: "Ms. Manisha Patel", role: "Member" },
-      { name: "Mr. Deepak Patidar", role: "Member" },
-      { name: "Mr. Sonu Bariya", role: "Member" },
-      { name: "Mr. Ashutosh Dubey", role: "Member" },
-      { name: "Mr. Saket Khare", role: "Member" },
-      { name: "Mr. Aaryan Yadav", role: "Member" },
-      { name: "Ms. Damini Rajak", role: "Member" },
-      { name: "Mr. Himanshu Gupta", role: "Member" },
+      { name: "Mr. Rahul Patidar", role: "President", img: "/img/images_files/image088.png" },
+      { name: "Ms. Ekta Barpete", role: "Vice President", img: "/img/images_files/image098.png" },
+      { name: "Mr. Himanshu Shankhla", role: "Member", img: null },
+      { name: "Mr. Nishant Nagwanshi", role: "Member", img: "/img/images_files/image090.png" },
+      { name: "Mr. Chanchal Singh Thakur", role: "Member", img: "/img/images_files/image092.png" },
+      { name: "Mr. Rishi Mishra", role: "Member", img: null },
+      { name: "Mr. Shubham Mishra", role: "Member", img: "/img/images_files/image094.png" },
+      { name: "Mr. Navneet", role: "Member", img: null },
+      { name: "Mr. Neetiraj Malviya", role: "Member", img: null },
+      { name: "Ms. Pooja Soni", role: "Member", img: "/img/images_files/image099.png" },
+      { name: "Ms. Sangeeta Paraste", role: "Member", img: "/img/images_files/image101.png" },
+      { name: "Ms. Aarti Dhurve", role: "Member", img: "/img/images_files/image103.png" },
+      { name: "Ms. Usha Suryawanshi", role: "Member", img: null },
+      { name: "Ms. Swati Soni", role: "Member", img: null },
+      { name: "Ms. Anshul Tripathi", role: "Member", img: null },
+      { name: "Ms. Shruti Singour", role: "Member", img: "/img/images_files/image111.png" },
+      { name: "Mr. Ankit Athnere", role: "Member", img: null },
+      { name: "Ms. Sonam", role: "Member", img: null },
+      { name: "Ms. Aradhna Mishra", role: "Member", img: null },
+      { name: "Mr. Shailendra Namdev", role: "Member", img: null },
+      { name: "Ms. Manisha Patel", role: "Member", img: null },
+      { name: "Mr. Deepak Patidar", role: "Member", img: null },
+      { name: "Mr. Sonu Bariya", role: "Member", img: null },
+      { name: "Mr. Ashutosh Dubey", role: "Member", img: null },
+      { name: "Mr. Saket Khare", role: "Member", img: null },
+      { name: "Mr. Aaryan Yadav", role: "Member", img: null },
+      { name: "Ms. Damini Rajak", role: "Member", img: null },
+      { name: "Mr. Himanshu Gupta", role: "Member", img: null },
     ],
   },
   {
     year: "2015–19",
     label: "Alumni",
     members: [
-      { name: "Mr. Neeraj Patidar", role: "President" },
-      { name: "Ms. Rajni Pendro", role: "Member" },
-      { name: "Ms. Shubhangi Singh", role: "Member" },
-      { name: "Ms. Jagriti Mourya", role: "Member" },
-      { name: "Ms. Ritika Watte", role: "Member" },
-      { name: "Ms. Ayushi Khatik", role: "Member" },
-      { name: "Ms. Yukta Pandey", role: "Member" },
-      { name: "Mr. Shanu Singh", role: "Member" },
-      { name: "Ms. Smriti Chaurasia", role: "Member" },
-      { name: "Mr. Sankalp Garg", role: "Member" },
-      { name: "Mr. Saurabh Singh Rajpoot", role: "Member" },
-      { name: "Mr. Sudeep Kumar", role: "Member" },
-      { name: "Mr. Ashutosh Mishra", role: "Treasurer" },
-      { name: "Mr. Tohit Khan", role: "Member" },
-      { name: "Mr. Abhishek Agrawal", role: "Member" },
-      { name: "Ms. Shweta Machiwar", role: "Member" },
+      { name: "Mr. Neeraj Patidar", role: "President", img: "/img/images_files/image068.png" },
+      { name: "Ms. Rajni Pendro", role: "Member", img: "/img/images_files/image070.png" },
+      { name: "Ms. Shubhangi Singh", role: "Member", img: null },
+      { name: "Ms. Jagriti Mourya", role: "Member", img: null },
+      { name: "Ms. Ritika Watte", role: "Member", img: "/img/images_files/image076.png" },
+      { name: "Ms. Ayushi Khatik", role: "Member", img: "/img/images_files/image077.png" },
+      { name: "Ms. Yukta Pandey", role: "Member", img: "/img/images_files/image078.png" },
+      { name: "Mr. Shanu Singh", role: "Member", img: null },
+      { name: "Ms. Smriti Chaurasia", role: "Member", img: null },
+      { name: "Mr. Sankalp Garg", role: "Member", img: "/img/images_files/image081.png" },
+      { name: "Mr. Saurabh Singh Rajpoot", role: "Member", img: null },
+      { name: "Mr. Sudeep Kumar", role: "Member", img: null },
+      { name: "Mr. Ashutosh Mishra", role: "Treasurer", img: "/img/images_files/image084.png" },
+      { name: "Mr. Tohit Khan", role: "Member", img: "/img/images_files/image085.png" },
+      { name: "Mr. Abhishek Agrawal", role: "Member", img: null },
+      { name: "Ms. Shweta Machiwar", role: "Member", img: null },
     ],
   },
   {
     year: "2014–18",
     label: "Alumni",
     members: [
-      { name: "Mr. Shikhar Barve", role: "President" },
-      { name: "Ms. Ayushi Jain", role: "Member" },
-      { name: "Ms. Pragya Agrawal", role: "Member" },
-      { name: "Mr. Shivani Mishra", role: "Member" },
-      { name: "Mr. Umesh Patidar", role: "Member" },
-      { name: "Mr. Sharad Kant Nagaich", role: "Member" },
-      { name: "Mr. Karan Kumar Prajapati", role: "Member" },
+      { name: "Mr. Shikhar Barve", role: "President", img: "/img/images_files/image061.png" },
+      { name: "Ms. Ayushi Jain", role: "Member", img: "/img/images_files/image059.png" },
+      { name: "Ms. Pragya Agrawal", role: "Member", img: null },
+      { name: "Mr. Shivani Mishra", role: "Member", img: null },
+      { name: "Mr. Umesh Patidar", role: "Member", img: "/img/images_files/image062.png" },
+      { name: "Mr. Sharad Kant Nagaich", role: "Member", img: "/img/images_files/image063.png" },
+      { name: "Mr. Karan Kumar Prajapati", role: "Member", img: null },
     ],
   },
   {
     year: "2013–17",
     label: "Alumni",
     members: [
-      { name: "Mr. Anoop Sharma", role: "President" },
-      { name: "Mr. Ashish Bharadwaj", role: "Vice President" },
-      { name: "Mr. Shubham Jain", role: "Member" },
-      { name: "Mr. Tajasvi Saxena", role: "Member" },
-      { name: "Mr. Anand Arole", role: "Member" },
-      { name: "Mr. Amit Yadav", role: "Member" },
-      { name: "Mr. Divyansh Jain", role: "Member" },
-      { name: "Mr. Saurabh Jain", role: "Member" },
-      { name: "Ms. Anchal Tiwari", role: "Member" },
-      { name: "Ms. Divya Paroha", role: "Member" },
-      { name: "Ms. Shweta Markam", role: "Member" },
-      { name: "Ms. Shweta Singh", role: "Member" },
-      { name: "Ms. Tripti Ratre", role: "Member" },
-      { name: "Ms. Shubhangi Soni", role: "Member" },
+      { name: "Mr. Anoop Sharma", role: "President", img: null },
+      { name: "Mr. Ashish Bharadwaj", role: "Vice President", img: "/img/images_files/image047.png" },
+      { name: "Mr. Shubham Jain", role: "Member", img: null },
+      { name: "Mr. Tajasvi Saxena", role: "Member", img: "/img/images_files/image042.png" },
+      { name: "Mr. Anand Arole", role: "Member", img: null },
+      { name: "Mr. Amit Yadav", role: "Member", img: "/img/images_files/image045.png" },
+      { name: "Mr. Divyansh Jain", role: "Member", img: null },
+      { name: "Mr. Saurabh Jain", role: "Member", img: "/img/images_files/image049.png" },
+      { name: "Ms. Anchal Tiwari", role: "Member", img: "/img/images_files/image051.png" },
+      { name: "Ms. Divya Paroha", role: "Member", img: null },
+      { name: "Ms. Shweta Markam", role: "Member", img: "/img/images_files/image054.png" },
+      { name: "Ms. Shweta Singh", role: "Member", img: null },
+      { name: "Ms. Tripti Ratre", role: "Member", img: "/img/images_files/image056.png" },
+      { name: "Ms. Shubhangi Soni", role: "Member", img: null },
     ],
   },
   {
     year: "2012–16",
     label: "Alumni",
     members: [
-      { name: "Mr. Sandeep Mehta", role: "Member" },
-      { name: "Ms. Sakshi Pandey", role: "Member" },
-      { name: "Ms. Varsha Manglani", role: "Member" },
-      { name: "Ms. Nimisha Prashant", role: "Member" },
-      { name: "Ms. Kinjal Jain", role: "Member" },
-      { name: "Ms. Paridhi Giriya", role: "Member" },
-      { name: "Mr. Satya Prakash Bisariya", role: "Member" },
-      { name: "Mr. Rishab Khampariya", role: "Member" },
-      { name: "Mr. Yogendra Prajapati", role: "Member" },
-      { name: "Mr. Mayank Nema", role: "Member" },
-      { name: "Mr. Vikrant Pandey", role: "Member" },
-      { name: "Mr. Rahul Jha", role: "Member" },
-      { name: "Ms. Sampda Saraf", role: "Member" },
+      { name: "Mr. Sandeep Mehta", role: "Member", img: "/img/images_files/image023.png" },
+      { name: "Ms. Sakshi Pandey", role: "Member", img: null },
+      { name: "Ms. Varsha Manglani", role: "Member", img: null },
+      { name: "Ms. Nimisha Prashant", role: "Member", img: null },
+      { name: "Ms. Kinjal Jain", role: "Member", img: "/img/images_files/image027.png" },
+      { name: "Ms. Paridhi Giriya", role: "Member", img: null },
+      { name: "Mr. Satya Prakash Bisariya", role: "Member", img: "/img/images_files/image030.png" },
+      { name: "Mr. Rishab Khampariya", role: "Member", img: "/img/images_files/image031.png" },
+      { name: "Mr. Yogendra Prajapati", role: "Member", img: null },
+      { name: "Mr. Mayank Nema", role: "Member", img: "/img/images_files/image035.png" },
+      { name: "Mr. Vikrant Pandey", role: "Member", img: "/img/images_files/image036.png" },
+      { name: "Mr. Rahul Jha", role: "Member", img: "/img/images_files/image034.png" },
+      { name: "Ms. Sampda Saraf", role: "Member", img: "/img/images_files/image039.png" },
     ],
   },
   {
     year: "2011–15",
     label: "Alumni",
     members: [
-      { name: "Mr. Saurav Kumar Dev", role: "Member" },
-      { name: "Mr. Gaurav Patil", role: "Member" },
-      { name: "Mr. Jitendra Kumar Tamiya", role: "Member" },
-      { name: "Mr. Devendra Markam", role: "Member" },
-      { name: "Mr. Himanshu Zharbade", role: "Member" },
-      { name: "Mr. Surendra Emne", role: "Member" },
-      { name: "Mr. Rajkumar Marskole", role: "Member" },
-      { name: "Mr. Avinash Gupta", role: "Member" },
-      { name: "Mr. Kamal Nath Dhurve", role: "Member" },
-      { name: "Mr. Anurag Mishra", role: "Member" },
+      { name: "Mr. Saurav Kumar Dev", role: "Member", img: "/img/images_files/image007.png" },
+      { name: "Mr. Gaurav Patil", role: "Member", img: "/img/images_files/image005.png" },
+      { name: "Mr. Jitendra Kumar Tamiya", role: "Member", img: "/img/images_files/image009.png" },
+      { name: "Mr. Devendra Markam", role: "Member", img: null },
+      { name: "Mr. Himanshu Zharbade", role: "Member", img: null },
+      { name: "Mr. Surendra Emne", role: "Member", img: "/img/images_files/Surendra Emne.png" },
+      { name: "Mr. Rajkumar Marskole", role: "Member", img: null },
+      { name: "Mr. Avinash Gupta", role: "Member", img: "/img/images_files/image017.png" },
+      { name: "Mr. Kamal Nath Dhurve", role: "Member", img: "/img/images_files/image019.png" },
+      { name: "Mr. Anurag Mishra", role: "Member", img: null },
     ],
   },
 ];
@@ -227,87 +291,123 @@ const roleColors = {
   "Event Manager": { bg: "#F5F3FF", text: "#4C1D95", dot: "#7C3AED" },
   "Exam Co-ordinator": { bg: "#ECFDF5", text: "#064E3B", dot: "#059669" },
   "Core Member": { bg: "#F8FAFC", text: "#334155", dot: "#64748B" },
+  "Core-Team Member": { bg: "#F0F9FF", text: "#0C4A6E", dot: "#38BDF8" },
   Member: { bg: "#F8FAFC", text: "#334155", dot: "#94A3B8" },
   "Vice-President": { bg: "#DBEAFE", text: "#1E40AF", dot: "#3B82F6" },
 };
 
-function getInitials(name) {
-  const parts = name.replace(/^(Mr\.|Ms\.|Mrs\.)\s*/i, "").trim().split(" ");
-  return parts.length >= 2
-    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
-    : parts[0].slice(0, 2).toUpperCase();
+function isFemale(name) {
+  return name.trim().startsWith("Ms.");
 }
 
-const avatarPalette = [
-  ["#7C3AED", "#EDE9FE"],
-  ["#0369A1", "#E0F2FE"],
-  ["#065F46", "#D1FAE5"],
-  ["#9D174D", "#FCE7F3"],
-  ["#92400E", "#FEF3C7"],
-  ["#1E40AF", "#DBEAFE"],
-  ["#9A3412", "#FFF7ED"],
-  ["#4C1D95", "#F5F3FF"],
-];
+function MaleAvatarSVG({ size = 56 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="28" cy="28" r="28" fill="#DBEAFE" />
+      <circle cx="28" cy="20" r="9" fill="#93C5FD" />
+      <path d="M10 50c0-9.94 8.06-18 18-18s18 8.06 18 18" fill="#3B82F6" />
+      <path d="M25 32 l3 5 l3-5" fill="#1D4ED8" />
+    </svg>
+  );
+}
 
-function getAvatarColors(name) {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  return avatarPalette[Math.abs(hash) % avatarPalette.length];
+function FemaleAvatarSVG({ size = 56 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="28" cy="28" r="28" fill="#FCE7F3" />
+      <circle cx="28" cy="20" r="9" fill="#F9A8D4" />
+      <path d="M19 18 Q19 9 28 9 Q37 9 37 18" fill="#EC4899" />
+      <path d="M14 50 Q14 32 28 32 Q42 32 42 50" fill="#EC4899" />
+    </svg>
+  );
 }
 
 function MemberCard({ member }) {
-  const initials = getInitials(member.name);
-  const [fg, bg] = getAvatarColors(member.name);
+  const [imgError, setImgError] = useState(false);
+  const female = isFemale(member.name);
   const roleStyle = roleColors[member.role] || roleColors["Member"];
+  const hasImage = member.img && !imgError;
+  const cleanName = member.name.replace(/^(Mr\.|Ms\.|Mrs\.)\s*/i, "").trim();
+  const prefix = member.name.match(/^(Mr\.|Ms\.|Mrs\.)/i)?.[0] || "";
 
   return (
-    <div style={{
-      background: "#fff",
-      borderRadius: 16,
-      border: "1px solid #F1F5F9",
-      padding: "20px 16px 16px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: 10,
-      transition: "box-shadow 0.2s, transform 0.2s",
-      cursor: "default",
-    }}
-    onMouseEnter={e => {
-      e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10)";
-      e.currentTarget.style.transform = "translateY(-3px)";
-    }}
-    onMouseLeave={e => {
-      e.currentTarget.style.boxShadow = "none";
-      e.currentTarget.style.transform = "translateY(0)";
-    }}>
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: 16,
+        border: "1px solid #F1F5F9",
+        padding: "0 0 14px 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 0,
+        overflow: "hidden",
+        transition: "box-shadow 0.2s, transform 0.2s",
+        cursor: "default",
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10)";
+        e.currentTarget.style.transform = "translateY(-3px)";
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.transform = "translateY(0)";
+      }}
+    >
       <div style={{
-        width: 56, height: 56, borderRadius: "50%",
-        background: bg, color: fg,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontWeight: 700, fontSize: 18, letterSpacing: 1,
-        border: `2px solid ${fg}22`,
+        width: "100%",
+        height: 130,
+        background: hasImage ? "#F1F5F9" : (female ? "#FDF2F8" : "#EFF6FF"),
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
         flexShrink: 0,
       }}>
-        {initials}
+        {hasImage ? (
+          <img
+            src={member.img}
+            alt={member.name}
+            onError={() => setImgError(true)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top center",
+              display: "block",
+            }}
+          />
+        ) : (
+          female ? <FemaleAvatarSVG size={72} /> : <MaleAvatarSVG size={72} />
+        )}
       </div>
-      <div style={{ textAlign: "center" }}>
-        <div style={{ fontWeight: 600, fontSize: 13, color: "#1E293B", lineHeight: 1.4 }}>
-          {member.name.replace(/^(Mr\.|Ms\.|Mrs\.)\s*/i, "").trim()}
+
+      <div style={{ textAlign: "center", padding: "10px 10px 0", width: "100%" }}>
+        <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 400, lineHeight: 1.2 }}>
+          {prefix}
         </div>
-        <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 1, fontWeight: 400 }}>
-          {member.name.match(/^(Mr\.|Ms\.|Mrs\.)/i)?.[0] || ""}
+        <div style={{ fontWeight: 600, fontSize: 12.5, color: "#1E293B", lineHeight: 1.4, marginTop: 1 }}>
+          {cleanName}
         </div>
       </div>
-      <span style={{
-        background: roleStyle.bg, color: roleStyle.text,
-        fontSize: 11, fontWeight: 600, padding: "3px 10px",
-        borderRadius: 20, display: "flex", alignItems: "center", gap: 5,
-        whiteSpace: "nowrap",
-      }}>
-        <span style={{ width: 6, height: 6, borderRadius: "50%", background: roleStyle.dot, display: "inline-block" }} />
-        {member.role}
-      </span>
+
+      <div style={{ marginTop: 8, paddingInline: 8 }}>
+        <span style={{
+          background: roleStyle.bg,
+          color: roleStyle.text,
+          fontSize: 10.5,
+          fontWeight: 600,
+          padding: "3px 9px",
+          borderRadius: 20,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 4,
+          whiteSpace: "nowrap",
+        }}>
+          <span style={{ width: 5, height: 5, borderRadius: "50%", background: roleStyle.dot, display: "inline-block", flexShrink: 0 }} />
+          {member.role}
+        </span>
+      </div>
     </div>
   );
 }
@@ -321,17 +421,22 @@ function BatchSection({ batch, defaultOpen }) {
       <button
         onClick={() => setOpen(o => !o)}
         style={{
-          width: "100%", background: isCurrentBatch ? "#7C3AED" : "#F8FAFC",
+          width: "100%",
+          background: isCurrentBatch ? "#7C3AED" : "#F8FAFC",
           border: isCurrentBatch ? "none" : "1px solid #E2E8F0",
           borderRadius: open ? "12px 12px 0 0" : 12,
           padding: "14px 20px",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          cursor: "pointer", transition: "background 0.2s",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          cursor: "pointer",
+          transition: "background 0.2s",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{
-            fontWeight: 700, fontSize: 17,
+            fontWeight: 700,
+            fontSize: 17,
             color: isCurrentBatch ? "#fff" : "#1E293B",
             fontFamily: "Georgia, serif",
           }}>
@@ -339,8 +444,11 @@ function BatchSection({ batch, defaultOpen }) {
           </span>
           {isCurrentBatch && (
             <span style={{
-              background: "#FDE68A", color: "#92400E",
-              fontSize: 11, fontWeight: 700, padding: "2px 10px",
+              background: "#FDE68A",
+              color: "#92400E",
+              fontSize: 11,
+              fontWeight: 700,
+              padding: "2px 10px",
               borderRadius: 20,
             }}>
               ✦ Current
@@ -348,10 +456,7 @@ function BatchSection({ batch, defaultOpen }) {
           )}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{
-            fontSize: 12, fontWeight: 500,
-            color: isCurrentBatch ? "#C4B5FD" : "#94A3B8",
-          }}>
+          <span style={{ fontSize: 12, fontWeight: 500, color: isCurrentBatch ? "#C4B5FD" : "#94A3B8" }}>
             {batch.members.length} members
           </span>
           <span style={{
@@ -359,7 +464,8 @@ function BatchSection({ batch, defaultOpen }) {
             background: isCurrentBatch ? "#ffffff33" : "#E2E8F0",
             display: "flex", alignItems: "center", justifyContent: "center",
             color: isCurrentBatch ? "#fff" : "#64748B",
-            fontSize: 14, transition: "transform 0.2s",
+            fontSize: 14,
+            transition: "transform 0.2s",
             transform: open ? "rotate(180deg)" : "none",
           }}>
             ▾
@@ -369,14 +475,15 @@ function BatchSection({ batch, defaultOpen }) {
 
       {open && (
         <div style={{
-          border: "1px solid #E2E8F0", borderTop: "none",
+          border: "1px solid #E2E8F0",
+          borderTop: "none",
           borderRadius: "0 0 12px 12px",
           padding: "20px",
           background: "#FAFBFF",
         }}>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
             gap: 12,
           }}>
             {batch.members.map((m, i) => (
@@ -393,36 +500,44 @@ export default function TeamAlumni() {
   const [search, setSearch] = useState("");
   const [filterRole, setFilterRole] = useState("All");
 
-  const allRoles = ["All", "President", "Vice President", "Superintendent", "Secretary", "Treasurer", "Media Head", "Teaching Head", "Technical Head", "Orphanage Head", "Event Manager", "Exam Co-ordinator", "Core Member", "Member"];
+  const allRoles = [
+    "All", "President", "Vice President", "Superintendent", "Secretary",
+    "Treasurer", "Media Head", "Teaching Head", "Technical Head",
+    "Orphanage Head", "Event Manager", "Exam Co-ordinator", "Core Member",
+    "Core-Team Member", "Member",
+  ];
 
   const filteredBatches = batches.map(b => ({
     ...b,
     members: b.members.filter(m => {
-      const matchSearch = m.name.toLowerCase().includes(search.toLowerCase()) || m.role.toLowerCase().includes(search.toLowerCase());
-      const matchRole = filterRole === "All" || m.role === filterRole || (filterRole === "Member" && m.role === "Kaarwaa.N Member");
+      const matchSearch =
+        m.name.toLowerCase().includes(search.toLowerCase()) ||
+        m.role.toLowerCase().includes(search.toLowerCase());
+      const matchRole =
+        filterRole === "All" || m.role === filterRole;
       return matchSearch && matchRole;
     }),
   })).filter(b => b.members.length > 0);
 
   const totalMembers = batches.reduce((acc, b) => acc + b.members.length, 0);
 
-  return (
+  return ( <div>
     <div style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", maxWidth: 1000, margin: "0 auto", padding: "32px 20px" }}>
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 36,marginTop : 35 }}>
-       
-        <h1 style={{ fontSize: 38, fontWeight: 800, color: "#0F172A", margin: "0 0 8px", fontFamily: "Georgia, serif", letterSpacing: -1 }}>
+      <div style={{ textAlign: "center", marginBottom: 36, marginTop: 35 }}>
+        <h1 style={{
+          fontSize: 38, fontWeight: 800, color: "#0F172A",
+          margin: "0 0 8px", fontFamily: "Georgia, serif", letterSpacing: -1,
+        }}>
           Our Team & Alumni
         </h1>
         <p style={{ color: "#64748B", fontSize: 15, margin: "0 0 20px" }}>
           Celebrating {totalMembers}+ members across {batches.length} batches since 2011
         </p>
-        {/* Stats row */}
         <div style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           {[
             { label: "Batches", value: batches.length },
             { label: "Total Members", value: `${totalMembers}+` },
-            { label: "Years of Service", value: "14+" },
+            { label: "Years of Service", value: "15+" },
           ].map((s, i) => (
             <div key={i} style={{
               background: "#F8FAFC", border: "1px solid #E2E8F0",
@@ -435,7 +550,6 @@ export default function TeamAlumni() {
         </div>
       </div>
 
-      {/* Search + Filter */}
       <div style={{ display: "flex", gap: 12, marginBottom: 28, flexWrap: "wrap" }}>
         <input
           type="text"
@@ -472,7 +586,6 @@ export default function TeamAlumni() {
         ))
       )}
 
-      {/* Footer note */}
       <div style={{
         textAlign: "center", marginTop: 40, padding: 20,
         background: "#FFF7ED", borderRadius: 12,
@@ -482,6 +595,9 @@ export default function TeamAlumni() {
           We apologize if your name is not listed. Please contact our web team at <strong>7440682926</strong>.
         </p>
       </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 }

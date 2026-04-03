@@ -74,7 +74,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="text-amber-500 w-4 h-4 mr-3 shrink-0" />
-                <span className="text-sm">+91 95750 16117</span>
+                <span className="text-sm">+91 91497 20731(Saurabh Patel 2023-27)</span>
               </li>
               <li className="flex items-center">
                 <Mail className="text-amber-500 w-4 h-4 mr-3 shrink-0" />
@@ -82,22 +82,19 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* Social Icons (Fixed using Lucide Components) */}
             <div className="mt-6">
               <p className="mb-2 text-slate-500 text-xs uppercase tracking-widest font-semibold">Connect with us:</p>
               <div className="flex space-x-3">
-                {/* Instagram */}
-                <a href="https://instagram.com" target="_blank" rel="noreferrer"
+                <a href="https://www.instagram.com/kaarwaa.n?igsh=ZDF0c3Nham1rOWZk" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#d62976] hover:border-[#d62976] hover:-translate-y-1 shadow-lg">
                   <Instagram className="w-5 h-5" />
                 </a>
                 {/* Facebook */}
-                <a href="https://facebook.com" target="_blank" rel="noreferrer"
+                <a href="https://www.facebook.com/kaarwaanjec?mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#1877F2] hover:border-[#1877F2] hover:-translate-y-1 shadow-lg">
                   <Facebook className="w-5 h-5" />
                 </a>
-                {/* YouTube */}
-                <a href="https://youtube.com" target="_blank" rel="noreferrer"
+                <a href="http://www.youtube.com/@kaarwaanjec9417" target="_blank" rel="noreferrer"
                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-[#FF0000] hover:border-[#FF0000] hover:-translate-y-1 shadow-lg">
                   <Youtube className="w-5 h-5" />
                 </a>
@@ -124,7 +121,7 @@ const Footer = () => {
       <div className="bg-[#020305] py-4 border-t border-white/5 relative z-20">
         <div className="container mx-auto text-center px-4">
           <p className="text-[10px] md:text-xs text-slate-500">
-            &copy; 2025 <span className="text-amber-500">JEC KAARWAA.N</span>. Social Welfare Society. All Rights Reserved.
+            &copy; 2025 <span className="text-amber-500">JEC KAARWAA.N...</span>. Social Welfare Society. All Rights Reserved.
           </p>
         </div>
       </div>

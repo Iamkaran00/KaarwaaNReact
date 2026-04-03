@@ -26,9 +26,10 @@ const Dropdown = ({ title, items, scrolled }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <button
+        // CHANGED: Unified color logic for consistency
         className={`flex items-center gap-1 text-[1.05rem] font-medium transition-colors duration-300 ${
-          scrolled || hovered ? "text-gray-800" : "text-orange-500"
-        } hover:text-orange-600`}
+          scrolled || hovered ? "text-gray-800" : "text-orange-600"
+        } hover:text-orange-700`}
       >
         {title}
         <ChevronDown 
@@ -96,8 +97,7 @@ const Navbar = () => {
   const donateItems = [
     { label: "Donate Funds", path: "/donate", icon: <Heart size={18} />, desc: "Secure transaction" },
     { label: "Educational Kit", path: "/donate/educational-kit", icon: <BookOpen size={18} />, desc: "Sponsor a child" },
-    { label: "Blood Donation", path: "/donateblood", icon: <Droplet size={18} />, desc: "Save someone's life" },
-    {label : "Cloth Donation" , path  : "/cloth" , icon : <Shirt size = {18} />,desc : "Give Some Warmthness"}
+    { label: "Blood Donation", path: "/donateblood", icon: <Droplet size={18} />, desc: "Save someone's life" }
   ];
  
   const domainItems = [
@@ -128,43 +128,26 @@ const Navbar = () => {
           /> 
         </Link>
 
-        {/* DESKTOP LINKS */}
-        {/* Ensure this div has 'flex' and 'items-center' */}
-        <div className="hidden md:flex items-center gap-8 text-orange-600">
-          <NavLink to="/" label="Home" scrolled={scrolled} className = 'text-orange-400'/>
+        <div className="hidden md:flex items-center gap-8">
+          {/* CHANGED: Removed the arbitrary className prop that wasn't functioning */}
+          <NavLink to="/" label="Home" scrolled={scrolled} />
           
           <Dropdown title="About Us" items={aboutItems} scrolled={scrolled} />
-          
-          {/* The Domain NavLink is replaced by this Dropdown */}
           <Dropdown title="Domain" items={domainItems} scrolled={scrolled} />
-          
           <Dropdown title="Donate" items={donateItems} scrolled={scrolled} />
-          
-          <NavLink to="/drivelinks" label="Gallery" scrolled={scrolled} />
         </div>
-
-        {/* ACTION BUTTONS */}
+ 
         <div className="flex items-center gap-4">
-          <button 
-            className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 border ${
-              scrolled 
-                ? "border-emerald-600 text-emerald-700 hover:bg-emerald-50" 
-                : "border-white/30 text-orange-600 bg-white/10 backdrop-blur-sm hover:bg-white/20"
-            }`}
-          >
-            <LogIn size={16} />
-            Login
-          </button>
+          
+          <Link to="/donate">
+            <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-sm shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5 transition-all duration-300">
+              <Heart size={16} className="fill-white" />
+              Donate
+            </button>
+          </Link>
 
-          <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-sm shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5 transition-all duration-300">
-            <Heart size={16} className="fill-white" />
-            <Link to = "/donate" >
-            Donate
-            </Link>
-          </button>
-
-          {/* MOBILE MENU TOGGLE */}
-          <button className={`md:hidden p-2 ${scrolled ? "text-gray-800" : "text-white"}`}>
+          {/* CHANGED: Mobile menu icon also defaults to orange instead of white so it doesn't disappear */}
+          <button className={`md:hidden p-2 transition-colors ${scrolled ? "text-gray-800" : "text-orange-600"}`}>
             <Menu size={24} />
           </button>
         </div>
@@ -179,7 +162,7 @@ const NavLink = ({ to, label, scrolled }) => {
     <button
       onClick={() => navigate(to)}
       className={`relative text-[1.05rem] font-medium transition-colors duration-300 group ${
-        scrolled ? "text-gray-700 hover:text-orange-600" : "text-white/90 hover:text-white"
+        scrolled ? "text-gray-800 hover:text-orange-600" : "text-orange-600 hover:text-orange-700"
       }`}
     >
       {label}

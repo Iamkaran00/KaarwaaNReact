@@ -9,8 +9,8 @@ import bg from "../asset/bg1.jpg";
 import teaching from "../asset/teachingpics.jpeg";
 import grpimg from '../asset/img1.jpg'
 import nukkad from '../asset/nukkad2oct24.jpg';
-import { CheckCircle2 } from "lucide-react"; // Optional: Adds nice bullet points
-// Reusable Component for the "Efforts" sections to keep code clean
+import { CheckCircle2 } from "lucide-react";  
+import { Link } from "react-router-dom";
  import Footer from "../components/Footer";
 import { 
   MapPin, 
@@ -58,8 +58,7 @@ const EffortSection = ({ img, title, text, reverse, badge, buttonText }) => (
 );
 
 const Home = () => {
-  // This is the repeated text from your code. 
-  // TIP: You should eventually write unique text for each section!
+  
   const commonText = "We are a group of students committed to teaching and supporting underprivileged children, helping them prepare for Navodaya, Gyanodaya, and similar entrance exams. Our goal is simple: to make quality education accessible, build strong academic foundations, and give every child a fair chance to succeed through guidance, consistency, and care. From filling their entrance exam registration form to preparing them every single day and taking them to exam center we did it all the way so that they did not feel lack in any aspect.";
 
   return (
@@ -80,7 +79,7 @@ const Home = () => {
         {/* Colored Backdrop Effect */}
         <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-600 to-amber-500 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition duration-500"></div>
         
-        {/* Main Image */}
+       
         <img 
           src={grpimg} 
           alt="Kaarwaa.N Team" 
@@ -147,7 +146,6 @@ const Home = () => {
         <div className="w-20 h-1.5 bg-emerald-500 mx-auto mt-6 rounded-full"></div>
       </div>
 
-      {/* --- EFFORTS GRID (All 4 Sections) --- */}
       <div className="max-w-7xl mx-auto px-6 pb-20">
         
         {/* 1. Teaching */}
@@ -157,7 +155,7 @@ const Home = () => {
           text={commonText}
           reverse={false}
           badge="1500+ Students Taught"
-          buttonText="Learn More"
+          buttonText="lightning the future"
         />
 
         {/* 2. Cloth Donation */}
@@ -166,7 +164,7 @@ const Home = () => {
           title="Cloth Donation Drives"
           text={commonText}
           reverse={true}
-          buttonText="See Donation Pics"
+          buttonText="Warming Society"
         />
 
         {/* 3. Plantation */}
@@ -175,7 +173,7 @@ const Home = () => {
           title="Tree Plantation"
           text={commonText}
           reverse={false}
-          buttonText="See Green Initiatives"
+          buttonText="Green Initiatives"
         />
 
         {/* 4. Events */}
@@ -251,10 +249,11 @@ const Home = () => {
                         <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Education Kit
                     </div>
                 </div>
-
+         <Link to = '/donate' >
                 <button class="w-fit bg-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-800 transition shadow-lg">
                     Donate Now!
                 </button>
+                </Link>
             </div>
 
             <div class="w-full md:w-5/12 bg-emerald-900 text-white p-12 flex flex-col items-center justify-center text-center relative">

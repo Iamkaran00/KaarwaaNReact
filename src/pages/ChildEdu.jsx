@@ -12,11 +12,12 @@ import storyimg from '../asset/successstoryedu.jpg';
 // Assuming your assets are in the same place
 import ed1 from "../asset/edu1.jpg";
 import ed2 from "../asset/edu2.jpg";
-import ed3 from "../asset/edu3.jpg";
+import ed6 from '../asset/ed4.jpeg';
 import ed4 from '../asset/examcenter.jpeg'
 import ed5 from '../asset/coverimage.jpeg'
 import img1 from '../assets/k2.png';
-import img2 from '../assets/Independenc.png';
+import img2 from '../asset/teachingpics.jpeg';
+
 import img3 from '../assets/examcenter.png';
 import img4 from '../assets/kanyashala1.png';
 import img5 from '../assets/teaching.png'
@@ -25,12 +26,12 @@ import Footer from "../components/footer";
 const ChildEducation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const carouselImages = [ed1, ed2, ed3,ed4,ed5];
+  const carouselImages = [ed1, ed2,img2,ed4,ed5];
 
  const cards = [
     {
       id: 1,
-      src: img1,
+      src: ed6,
    
       className: "md:col-span-2 md:row-span-2", 
     },
@@ -202,7 +203,6 @@ const ChildEducation = () => {
 
 </section>
 
-      {/* --- THE SUCCESS STORY (ROOPMATI) --- */}
       <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <motion.div 
@@ -291,29 +291,7 @@ const ChildEducation = () => {
         </div>
       </section>
 
-      {/* --- FOOTER CTA --- */}
-      <section className="py-24 px-6 bg-orange-500 text-white text-center">
-        <motion.div 
-          initial={{ scale: 0.9, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h2 className="text-4xl md:text-6xl font-black mb-8 italic">"Our responsibilities do not end at casting our votes."</h2>
-          <p className="text-orange-100 text-xl mb-12 leading-relaxed">
-            Whether it's infrastructure or basic education, we have a moral obligation to build a foundation for these children.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-10 py-5 bg-white text-orange-600 rounded-full font-black shadow-2xl hover:bg-slate-900 hover:text-white transition-all transform hover:-translate-y-1">
-              Become a Volunteer
-            </button>
-            <button className="px-10 py-5 bg-orange-600 border-2 border-orange-400 text-white rounded-full font-black hover:bg-orange-700 transition-all">
-           <Link to = '/donate' >
-            Donate Materials
-           </Link>
-            </button>
-          </div>
-        </motion.div>
-      </section>
+    
   <Footer/>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Pencil, GraduationCap, Backpack, Heart, Sparkles, CheckCircle2, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 const EducationalKitDonation = () => {
   const kitItems = [
     { item: "School Bag", icon: <Backpack size={20} /> },
@@ -89,7 +90,7 @@ const EducationalKitDonation = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <a 
-                href="tel:+91XXXXXXXXXX" 
+                href="tel:+91 70917 67625" 
                 className="flex items-center justify-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-2xl font-bold hover:bg-orange-50 transition-colors"
               >
                 <Phone size={20} />
@@ -111,6 +112,7 @@ const EducationalKitDonation = () => {
         </div>
 
       </div>
+      <Footer/>
     </div>
   );
 };

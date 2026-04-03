@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Mail, ShieldCheck, Copy, Heart, Info } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const DonateFinancial = () => {
-  // Replace these with actual details
-  const upiNumber = "91XXXXXXXXXX"; 
+ 
+  const upiNumber = "+91 91497 20731"; 
   const upiId = "charity@upi";
 
   const copyToClipboard = (text) => {
@@ -16,7 +17,7 @@ const DonateFinancial = () => {
     <div className="min-h-screen bg-gray-50 pt-28 pb-12 px-6">
       <div className="max-w-4xl mx-auto">
         
-        {/* Header Section */}
+         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,7 +36,6 @@ const DonateFinancial = () => {
 
         <div className="grid md:grid-cols-5 gap-8">
           
-          {/* Main Donation Card */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -108,13 +108,13 @@ const DonateFinancial = () => {
                 
                 <div className="space-y-4">
                   <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-sm hover:text-orange-400 transition-colors">
-                    <Phone size={16} /> +91 XXXXXXXXXX
+                    <Phone size={16} /> +91 7091767625
                   </a>
-                  <a href="https://wa.me/91XXXXXXXXXX" className="flex items-center gap-3 text-sm hover:text-emerald-400 transition-colors">
+                  <a href="https://wa.me/917091767625" className="flex items-center gap-3 text-sm hover:text-emerald-400 transition-colors">
                     <MessageCircle size={16} /> WhatsApp Support
                   </a>
                   <a href="mailto:support@kaarwaan.org" className="flex items-center gap-3 text-sm hover:text-orange-400 transition-colors">
-                    <Mail size={16} /> support@kaarwaan.org
+                    <Mail size={16} /> kaarwaanjec@gmail.com
                   </a>
                 </div>
               </div>
@@ -137,6 +137,7 @@ const DonateFinancial = () => {
 
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
