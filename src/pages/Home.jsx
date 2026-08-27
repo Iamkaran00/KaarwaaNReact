@@ -307,59 +307,274 @@
 
 
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
+// import Hero from "../section/Hero";
+// import clothimg from '../asset/img2.jpg';
+// import plantingtree from '../asset/img7.jpg';
+// import jeclogo from '../asset/jeclogo.png'
+// import kevent from '../asset/kevent.jpg';
+// import teaching from "../asset/teachingpics.jpeg";
+// import grpimg from '../asset/img1.jpg'
+// import nukkad from '../asset/nukkad2oct24.jpg';
+// import { Link } from "react-router-dom";
+// import Footer from "../components/Footer";
+// import ZigZagCarousel from '../components/Carousel';
+
+//  import { 
+//   MapPin, 
+//   Phone, 
+//   Mail, 
+//   Link as LinkIcon, 
+//   HeartHandshake, 
+//   Facebook, 
+//   Instagram, 
+//   Youtube 
+// } from 'lucide-react';
+
+// // --- Fully Responsive Effort Section ---
+// const EffortSection = ({ img, title, text, reverse, badge, buttonText }) => (
+//   <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-12 py-10 lg:py-16 border-b border-gray-100 last:border-0`}>
+//     {/* Image container with responsive height */}
+//     <div className="w-full lg:w-1/2 group overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl relative">
+//       <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
+//       <img 
+//         src={img} 
+//         alt={title} 
+//         className="w-full h-64 sm:h-80 lg:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700" 
+//       />
+//     </div>
+
+//     {/* Text container responsive alignment */}
+//     <div className="w-full lg:w-1/2 flex flex-col items-start space-y-4 lg:space-y-6">
+//       <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 border-l-4 border-emerald-600 pl-4">
+//         {title}
+//       </h3>
+//       <p className="text-base lg:text-lg text-gray-600 leading-relaxed text-justify">
+//         {text}
+//       </p>
+      
+//       <div className="flex flex-wrap items-center gap-3 mt-2">
+//         {badge && (
+//           <span className="bg-emerald-100 text-emerald-800 px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-bold uppercase tracking-wider shadow-sm">
+//             {badge}
+//           </span>
+//         )}
+//         <button className="px-6 lg:px-8 py-2.5 lg:py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-emerald-700 hover:shadow-lg transition-all duration-300 text-sm lg:text-base">
+//           {buttonText || "See More Pics"}
+//         </button>
+//       </div>
+//     </div>
+//   </div>
+// );
+
+// const Home = () => {
+//   const commonText = "We are a group of students committed to teaching and supporting underprivileged children, helping them prepare for Navodaya, Gyanodaya, and similar entrance exams. Our goal is simple: to make quality education accessible and give every child a fair chance to succeed.";
+//   const clothDonationtext = "Our cloth donation drives aim to bring warmth and dignity to marginalized communities. From door-to-door collection campaigns to personally distributing garments, we ensure no one faces harsh weather without proper clothing.";
+//   const socialEventsText = "We drive grassroots change through impactful social events like cleanliness drives and Nukkad Nataks. Our goal is to spark meaningful conversations and foster a strong sense of community empathy among the youth.";
+//   const TreePlantation = "We are dedicated to fighting climate change through tree plantation drives. From identifying barren lands to selecting native saplings, we nurture them to ensure they survive and thrive for future generations.";
+
+//   return (
+//     <div className="w-full bg-white overflow-x-hidden font-sans">
+//       <Hero />
+
+//       {/* --- ABOUT SECTION (RESPONSIVE) --- */}
+//       <section className="relative py-12 lg:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+//         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+//           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            
+//             {/* Team Image */}
+//             <div className="w-full lg:w-1/2 relative group">
+//               <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-tr from-emerald-600 to-amber-500 rounded-3xl blur-lg opacity-20"></div>
+//               <img 
+//                 src={grpimg} 
+//                 alt="Kaarwaa.N Team" 
+//                 className="relative w-full h-72 sm:h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl border border-gray-100" 
+//               />
+//               <div className="absolute -bottom-4 -right-4 bg-white p-3 lg:p-4 rounded-xl shadow-xl border border-gray-100 hidden sm:block">
+//                 <p className="text-emerald-800 font-bold text-sm lg:text-lg">Since 2012</p>
+//                 <p className="text-gray-500 text-[10px] lg:text-xs">Serving Society</p>
+//               </div>
+//             </div>
+
+//             {/* About Text */}
+//             <div className="w-full lg:w-1/2 space-y-6">
+//               <h2 className="text-3xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+//                 About <span className="text-emerald-600">Kaarwaa.N...</span>
+//               </h2>
+//               <div className="h-1.5 w-20 lg:w-24 bg-amber-500 rounded-full"></div>
+
+//               <div className="space-y-4 text-base lg:text-lg text-gray-600 leading-relaxed">
+//                 <p>
+//                   <strong className="text-emerald-700 font-semibold">Kaarwaa.N...</strong> is a social welfare society of 
+//                   <span className="text-gray-900 font-medium font-bold"> Jabalpur Engineering College</span>. We uplift underprivileged children and spread social awareness.
+//                 </p>
+
+//                 {/* Grid for Activities */}
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+//                   {["Nukkad Natak", "Tree Plantation", "Blood Donation", "Cloth Drives"].map((label, index) => (
+//                     <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm border border-gray-50">
+//                       <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+//                       <span className="font-bold text-gray-700 text-sm">{label}</span>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* --- OUR EFFORTS HEADER --- */}
+//       <div className="py-12 text-center bg-gray-50 px-4">
+//         <p className="text-xs lg:text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2">What We Do</p>
+//         <h2 className="text-3xl lg:text-5xl font-black text-gray-900">Our Efforts</h2>
+//         <div className="w-16 lg:w-20 h-1.5 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+//       </div>
+
+//       {/* --- EFFORT LIST --- */}
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 lg:pb-20">
+//         <EffortSection img={teaching} title="Education & Teaching" text={commonText} badge="1500+ Students" />
+//         <EffortSection img={clothimg} title="Cloth Donation" text={clothDonationtext} reverse={true} />
+//         <EffortSection img={plantingtree} title="Tree Plantation" text={TreePlantation} />
+//         <EffortSection img={kevent} title="Social Events" text={socialEventsText} reverse={true} />
+//       </div>
+
+//       {/* --- RECENT ACTIVITY --- */}
+//       <div className="w-full bg-gray-900 text-white py-16 lg:py-24 relative px-4">
+//         <div className="max-w-6xl mx-auto flex flex-col items-center">
+//           <h2 className="text-3xl lg:text-6xl font-bold mb-4 text-center">Recent Activity</h2>
+//           <div className="flex items-center gap-4 mb-8">
+//              <span className="w-8 lg:w-12 h-1 bg-amber-500"></span>
+//              <p className="text-xl lg:text-2xl text-amber-500 font-mono">2 October 2024</p>
+//              <span className="w-8 lg:w-12 h-1 bg-amber-500"></span>
+//           </div>
+//           <div className="w-full max-w-4xl px-2">
+//              <img src={nukkad} alt="Recent Event" className="w-full rounded-xl shadow-2xl border border-gray-700" />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* --- MENTORS --- */}
+//       <div className="py-16 lg:py-24 bg-white overflow-hidden">
+//         <h2 className="text-3xl lg:text-5xl font-bold text-amber-800 mb-10 text-center">Our Mentors</h2>
+//         <ZigZagCarousel />
+//       </div>
+
+//       {/* --- DONATION SECTION (MOBILE OPTIMIZED) --- */}
+//       <section className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+//         <div className="flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+//             <div className="w-full md:w-7/12 p-8 lg:p-16 flex flex-col justify-center">
+//                 <span className="text-orange-600 font-bold tracking-widest text-xs uppercase mb-4">Support Our Cause</span>
+//                 <h2 className="text-2xl lg:text-4xl font-extrabold text-gray-900 mb-6">Your Donation will help.</h2>
+//                 <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
+//                     Every penny is spent directly on children's welfare and educational programs.
+//                 </p>
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 font-semibold text-gray-700">
+//                     {["Child Education", "Cloth Distribution", "Tree Plantation", "Education Kit"].map((item, i) => (
+//                       <div key={i} className="flex items-center gap-3 text-sm lg:text-base">
+//                         <span className="w-2 h-2 bg-emerald-500 rounded-full"></span> {item}
+//                       </div>
+//                     ))}
+//                 </div>
+//                 <Link to='/donate' className="w-full sm:w-fit">
+//                     <button className="w-full sm:w-fit bg-emerald-700 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-800 transition shadow-lg">
+//                         Donate Now!
+//                     </button>
+//                 </Link>
+//             </div>
+            
+//             <div className="w-full md:w-5/12 bg-emerald-900 text-white p-10 lg:p-12 flex flex-col items-center justify-center text-center">
+//                 <img src={jeclogo} alt="Logo" className="w-24 lg:w-32 mb-6 drop-shadow-md"/>
+//                 <h3 className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">Kaarwaa.N...</h3>
+//                 <p className="text-emerald-100 uppercase tracking-widest text-[10px] lg:text-xs font-bold mb-1">Social & Welfare Society</p>
+//                 <p className="text-lg lg:text-xl font-semibold">Jabalpur Engineering College</p>
+//             </div>
+//         </div>
+//       </section>
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React from "react";
 import Hero from "../section/Hero";
 import clothimg from '../asset/img2.jpg';
 import plantingtree from '../asset/img7.jpg';
-import jeclogo from '../asset/jeclogo.png'
+import jeclogo from '../asset/jeclogo.png';
 import kevent from '../asset/kevent.jpg';
 import teaching from "../asset/teachingpics.jpeg";
-import grpimg from '../asset/img1.jpg'
+import grpimg from '../asset/img1.jpg';
 import nukkad from '../asset/nukkad2oct24.jpg';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import ZigZagCarousel from '../components/Carousel';
 
- import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Link as LinkIcon, 
-  HeartHandshake, 
-  Facebook, 
-  Instagram, 
-  Youtube 
-} from 'lucide-react';
-
 // --- Fully Responsive Effort Section ---
 const EffortSection = ({ img, title, text, reverse, badge, buttonText }) => (
-  <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-12 py-10 lg:py-16 border-b border-gray-100 last:border-0`}>
-    {/* Image container with responsive height */}
-    <div className="w-full lg:w-1/2 group overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl relative">
+  <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-6 sm:gap-8 lg:gap-12 py-8 sm:py-12 lg:py-16 border-b border-gray-100 last:border-0`}>
+    {/* Image container */}
+    <div className="w-full lg:w-1/2 group overflow-hidden rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl relative">
       <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
       <img 
         src={img} 
         alt={title} 
-        className="w-full h-64 sm:h-80 lg:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700" 
+        loading="lazy"
+        className="w-full h-56 sm:h-72 md:h-80 lg:h-[380px] object-cover transform group-hover:scale-105 transition-transform duration-700" 
       />
     </div>
 
-    {/* Text container responsive alignment */}
-    <div className="w-full lg:w-1/2 flex flex-col items-start space-y-4 lg:space-y-6">
-      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 border-l-4 border-emerald-600 pl-4">
+    {/* Text container */}
+    <div className="w-full lg:w-1/2 flex flex-col items-start space-y-3 sm:space-y-4 lg:space-y-5">
+      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 border-l-4 border-emerald-600 pl-3 sm:pl-4">
         {title}
       </h3>
-      <p className="text-base lg:text-lg text-gray-600 leading-relaxed text-justify">
+      <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed text-left sm:text-justify">
         {text}
       </p>
       
-      <div className="flex flex-wrap items-center gap-3 mt-2">
+      <div className="flex flex-wrap items-center gap-3 pt-1 sm:pt-2 w-full sm:w-auto">
         {badge && (
-          <span className="bg-emerald-100 text-emerald-800 px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-bold uppercase tracking-wider shadow-sm">
+          <span className="bg-emerald-100 text-emerald-800 px-3.5 sm:px-5 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider shadow-sm">
             {badge}
           </span>
         )}
-        <button className="px-6 lg:px-8 py-2.5 lg:py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-emerald-700 hover:shadow-lg transition-all duration-300 text-sm lg:text-base">
+        <button className="w-full sm:w-auto px-6 lg:px-8 py-2.5 lg:py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-emerald-700 active:scale-95 hover:shadow-lg transition-all duration-300 text-xs sm:text-sm lg:text-base">
           {buttonText || "See More Pics"}
         </button>
       </div>
@@ -377,10 +592,10 @@ const Home = () => {
     <div className="w-full bg-white overflow-x-hidden font-sans">
       <Hero />
 
-      {/* --- ABOUT SECTION (RESPONSIVE) --- */}
-      <section className="relative py-12 lg:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      {/* --- ABOUT SECTION --- */}
+      <section className="relative py-10 sm:py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
             
             {/* Team Image */}
             <div className="w-full lg:w-1/2 relative group">
@@ -388,33 +603,34 @@ const Home = () => {
               <img 
                 src={grpimg} 
                 alt="Kaarwaa.N Team" 
-                className="relative w-full h-72 sm:h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl border border-gray-100" 
+                loading="lazy"
+                className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[480px] object-cover rounded-2xl shadow-xl sm:shadow-2xl border border-gray-100" 
               />
-              <div className="absolute -bottom-4 -right-4 bg-white p-3 lg:p-4 rounded-xl shadow-xl border border-gray-100 hidden sm:block">
-                <p className="text-emerald-800 font-bold text-sm lg:text-lg">Since 2012</p>
-                <p className="text-gray-500 text-[10px] lg:text-xs">Serving Society</p>
+              <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-white p-2.5 sm:p-4 rounded-xl shadow-xl border border-gray-100">
+                <p className="text-emerald-800 font-bold text-xs sm:text-base lg:text-lg">Since 2012</p>
+                <p className="text-gray-500 text-[9px] sm:text-xs">Serving Society</p>
               </div>
             </div>
 
             {/* About Text */}
-            <div className="w-full lg:w-1/2 space-y-6">
-              <h2 className="text-3xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+            <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
                 About <span className="text-emerald-600">Kaarwaa.N...</span>
               </h2>
-              <div className="h-1.5 w-20 lg:w-24 bg-amber-500 rounded-full"></div>
+              <div className="h-1 sm:h-1.5 w-16 sm:w-24 bg-amber-500 rounded-full"></div>
 
-              <div className="space-y-4 text-base lg:text-lg text-gray-600 leading-relaxed">
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
                 <p>
                   <strong className="text-emerald-700 font-semibold">Kaarwaa.N...</strong> is a social welfare society of 
-                  <span className="text-gray-900 font-medium font-bold"> Jabalpur Engineering College</span>. We uplift underprivileged children and spread social awareness.
+                  <span className="text-gray-900 font-bold"> Jabalpur Engineering College</span>. We uplift underprivileged children and spread social awareness.
                 </p>
 
                 {/* Grid for Activities */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2">
                   {["Nukkad Natak", "Tree Plantation", "Blood Donation", "Cloth Drives"].map((label, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm border border-gray-50">
-                      <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                      <span className="font-bold text-gray-700 text-sm">{label}</span>
+                    <div key={index} className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-white rounded-xl shadow-sm border border-gray-100">
+                      <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></div>
+                      <span className="font-semibold text-gray-700 text-xs sm:text-sm">{label}</span>
                     </div>
                   ))}
                 </div>
@@ -425,14 +641,14 @@ const Home = () => {
       </section>
 
       {/* --- OUR EFFORTS HEADER --- */}
-      <div className="py-12 text-center bg-gray-50 px-4">
-        <p className="text-xs lg:text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2">What We Do</p>
-        <h2 className="text-3xl lg:text-5xl font-black text-gray-900">Our Efforts</h2>
-        <div className="w-16 lg:w-20 h-1.5 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+      <div className="py-8 sm:py-12 text-center bg-gray-50 px-4">
+        <p className="text-xs lg:text-sm font-bold text-emerald-600 uppercase tracking-widest mb-1.5 sm:mb-2">What We Do</p>
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900">Our Efforts</h2>
+        <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-emerald-500 mx-auto mt-3 sm:mt-4 rounded-full"></div>
       </div>
 
       {/* --- EFFORT LIST --- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 lg:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16 lg:pb-20">
         <EffortSection img={teaching} title="Education & Teaching" text={commonText} badge="1500+ Students" />
         <EffortSection img={clothimg} title="Cloth Donation" text={clothDonationtext} reverse={true} />
         <EffortSection img={plantingtree} title="Tree Plantation" text={TreePlantation} />
@@ -440,55 +656,67 @@ const Home = () => {
       </div>
 
       {/* --- RECENT ACTIVITY --- */}
-      <div className="w-full bg-gray-900 text-white py-16 lg:py-24 relative px-4">
-        <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl lg:text-6xl font-bold mb-4 text-center">Recent Activity</h2>
-          <div className="flex items-center gap-4 mb-8">
-             <span className="w-8 lg:w-12 h-1 bg-amber-500"></span>
-             <p className="text-xl lg:text-2xl text-amber-500 font-mono">2 October 2024</p>
-             <span className="w-8 lg:w-12 h-1 bg-amber-500"></span>
+      <div className="w-full bg-gray-900 text-white py-12 sm:py-16 lg:py-24 relative px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+          <h2 className="text-2xl sm:text-4xl lg:text-6xl font-bold mb-2 sm:mb-4">Recent Activity</h2>
+          <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <span className="w-6 sm:w-12 h-0.5 sm:h-1 bg-amber-500"></span>
+            <p className="text-base sm:text-xl lg:text-2xl text-amber-500 font-mono">2 October 2024</p>
+            <span className="w-6 sm:w-12 h-0.5 sm:h-1 bg-amber-500"></span>
           </div>
-          <div className="w-full max-w-4xl px-2">
-             <img src={nukkad} alt="Recent Event" className="w-full rounded-xl shadow-2xl border border-gray-700" />
+          <div className="w-full max-w-4xl">
+            <img 
+              src={nukkad} 
+              alt="Recent Event" 
+              loading="lazy"
+              className="w-full h-auto rounded-xl sm:rounded-2xl shadow-2xl border border-gray-800 object-cover" 
+            />
           </div>
         </div>
       </div>
 
       {/* --- MENTORS --- */}
-      <div className="py-16 lg:py-24 bg-white overflow-hidden">
-        <h2 className="text-3xl lg:text-5xl font-bold text-amber-800 mb-10 text-center">Our Mentors</h2>
+      <div className="py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-amber-800 mb-6 sm:mb-10 text-center">
+          Our Mentors
+        </h2>
         <ZigZagCarousel />
       </div>
 
-      {/* --- DONATION SECTION (MOBILE OPTIMIZED) --- */}
-      <section className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
-        <div className="flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-            <div className="w-full md:w-7/12 p-8 lg:p-16 flex flex-col justify-center">
-                <span className="text-orange-600 font-bold tracking-widest text-xs uppercase mb-4">Support Our Cause</span>
-                <h2 className="text-2xl lg:text-4xl font-extrabold text-gray-900 mb-6">Your Donation will help.</h2>
-                <p className="text-gray-600 text-base lg:text-lg mb-8 leading-relaxed">
-                    Every penny is spent directly on children's welfare and educational programs.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 font-semibold text-gray-700">
-                    {["Child Education", "Cloth Distribution", "Tree Plantation", "Education Kit"].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-sm lg:text-base">
-                        <span className="w-2 h-2 bg-emerald-500 rounded-full"></span> {item}
-                      </div>
-                    ))}
+      {/* --- DONATION SECTION --- */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-20">
+        <div className="flex flex-col md:flex-row bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl overflow-hidden border border-gray-100">
+          <div className="w-full md:w-7/12 p-6 sm:p-10 lg:p-14 flex flex-col justify-center text-left">
+            <span className="text-orange-600 font-bold tracking-widest text-[10px] sm:text-xs uppercase mb-2 sm:mb-4">
+              Support Our Cause
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-5">
+              Your Donation will help.
+            </h2>
+            <p className="text-gray-600 text-xs sm:text-sm lg:text-base mb-6 sm:mb-8 leading-relaxed">
+              Every penny is spent directly on children's welfare and educational programs.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 mb-8 font-semibold text-gray-700">
+              {["Child Education", "Cloth Distribution", "Tree Plantation", "Education Kit"].map((item, i) => (
+                <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm lg:text-base">
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full shrink-0"></span> 
+                  <span>{item}</span>
                 </div>
-                <Link to='/donate' className="w-full sm:w-fit">
-                    <button className="w-full sm:w-fit bg-emerald-700 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-800 transition shadow-lg">
-                        Donate Now!
-                    </button>
-                </Link>
+              ))}
             </div>
-            
-            <div className="w-full md:w-5/12 bg-emerald-900 text-white p-10 lg:p-12 flex flex-col items-center justify-center text-center">
-                <img src={jeclogo} alt="Logo" className="w-24 lg:w-32 mb-6 drop-shadow-md"/>
-                <h3 className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">Kaarwaa.N...</h3>
-                <p className="text-emerald-100 uppercase tracking-widest text-[10px] lg:text-xs font-bold mb-1">Social & Welfare Society</p>
-                <p className="text-lg lg:text-xl font-semibold">Jabalpur Engineering College</p>
-            </div>
+            <Link to='/donate' className="w-full sm:w-fit">
+              <button className="w-full sm:w-fit bg-emerald-700 text-white px-8 sm:px-10 py-3 sm:py-3.5 rounded-full font-bold text-sm sm:text-base lg:text-lg hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-700/20">
+                Donate Now!
+              </button>
+            </Link>
+          </div>
+          
+          <div className="w-full md:w-5/12 bg-emerald-900 text-white p-8 sm:p-10 lg:p-12 flex flex-col items-center justify-center text-center">
+            <img src={jeclogo} alt="Logo" loading="lazy" className="w-20 sm:w-24 lg:w-28 mb-4 sm:mb-6 drop-shadow-md"/>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-400 mb-1 sm:mb-2">Kaarwaa.N...</h3>
+            <p className="text-emerald-100 uppercase tracking-widest text-[9px] sm:text-xs font-bold mb-1">Social & Welfare Society</p>
+            <p className="text-base sm:text-lg lg:text-xl font-semibold">Jabalpur Engineering College</p>
+          </div>
         </div>
       </section>
 
