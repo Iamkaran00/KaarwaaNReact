@@ -678,7 +678,7 @@ const batches = [
       { name: "Mr. Arpit Selotkar", role: "Orphanage Head", img: "/img/mbr2023_27/ArpitS.jpeg" },
       { name: "Ms. Khushbhu Patel", role: "Orphanage Head", img: "/img/mbr2023_27/KhusbooP.jpeg" },
       { name: "Mr. Kapil Patidar", role: "Orphanage Head", img: "/img/mbr2023_27/KapilP.png" },
-      { name: "Mr. Arjun Kurmi", role: "Event Manager", img: null },
+      { name: "Mr. Arjun Kurmi", role: "Event Manager", img:"/img"  },
       { name: "Mr. Yash Bhadoriya", role: "Event Manager", img: "/img/mbr2023_27/YashB.jpeg" },
       { name: "Ms. Kohima Dharne", role: "Event Manager", img: null },
       { name: "Mr. Ganesh Dhakad", role: "Exam Co-ordinator", img: null },
